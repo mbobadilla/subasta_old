@@ -1,0 +1,189 @@
+{
+  "version": "0.0.0",
+  "name": "subastados",
+  "appPath": "src/main/webapp/",
+  "testPath": "src/test/javascript/spec",
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-aria": "1.5.8",
+    "angular-bootstrap": "1.3.3",
+    "angular-cache-buster": "0.4.3",
+    "angular-cookies": "1.5.8",
+    "angular-dynamic-locale": "0.1.32",
+    "angular-i18n": "1.5.8",
+    "ngstorage": "0.3.10",
+    "angular-loading-bar": "0.9.0",
+    "angular-resource": "1.5.8",
+    "angular-sanitize": "1.5.8",
+    "angular-translate": "2.11.1",
+    "angular-translate-interpolation-messageformat": "2.11.1",
+    "angular-translate-loader-partial": "2.11.1",
+    "angular-translate-storage-cookie": "2.11.1",
+    "angular-ui-router": "0.3.1",
+    "angular-material": "1.1.7",
+    "angular-animate": "1.5.8",
+    "angular-messages": "1.5.8",
+    "humanize-duration": "3.10.1",
+    "moment": "2.9.0",
+    "angular-timer": "1.3.5",
+    "bootstrap": "3.3.7",
+    "bootstrap-ui-datetime-picker": "2.4.3",
+    "jquery": "3.1.0",
+    "json3": "3.3.2",
+    "messageformat": "0.3.1",
+    "modernizr": "3.3.1",
+    "ng-file-upload": "12.0.4",
+    "ngInfiniteScroll": "1.3.0",
+    "sockjs-client": "1.1.1",
+    "stomp-websocket": "2.3.4",
+    "swagger-ui": "2.1.5",
+    "angular-ui-carousel": "0.1.10",
+    "teljs": "1.3.3",
+    "ng-country-select": "0.1.4",
+    "checklist-model": "1.0.0",
+    "angular-moment-picker": "0.10.2"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.8"
+  },
+  "overrides": {
+    "angular": {
+      "main": "angular.min.js",
+      "dependencies": {
+        "jquery": "3.1.0"
+      }
+    },
+    "angular-aria": {
+      "main": "angular-aria.min.js"
+    },
+    "angular-bootstrap": {
+      "main": "ui-bootstrap-tpls.min.js"
+    },
+    "angular-cache-buster": {
+      "main": "angular-cache-buster.js",
+      "dependencies": {
+        "angular": "1.5.8"
+      }
+    },
+    "angular-cookies": {
+      "main": "angular-cookies.min.js"
+    },
+    "angular-dynamic-locale": {
+      "main": "dist/tmhDynamicLocale.min.js",
+      "dependencies": {
+        "angular": "1.5.8"
+      }
+    },
+    "ngstorage": {
+      "main": "ngStorage.min.js"
+    },
+    "angular-loading-bar": {
+      "main": [
+        "build/loading-bar.min.js",
+        "build/loading-bar.min.css"
+      ]
+    },
+    "angular-resource": {
+      "main": "angular-resource.min.js"
+    },
+    "angular-sanitize": {
+      "main": "angular-sanitize.min.js"
+    },
+    "angular-translate": {
+      "main": "angular-translate.min.js"
+    },
+    "angular-translate-interpolation-messageformat": {
+      "main": "angular-translate-interpolation-messageformat.min.js"
+    },
+    "angular-translate-loader-partial": {
+      "main": "angular-translate-loader-partial.min.js"
+    },
+    "angular-translate-storage-cookie": {
+      "main": "angular-translate-storage-cookie.min.js"
+    },
+    "angular-ui-router": {
+      "main": "release/angular-ui-router.min.js"
+    },
+    "angular-material": {
+      "main": [
+        "angular-material.min.js",
+        "angular-material.min.css"
+      ]
+    },
+    "angular-animate": {
+      "main": "angular-animate.min.js"
+    },
+    "angular-messages": {
+      "main": "angular-messages.min.js"
+    },
+    "humanize-duration": {
+      "main": "humanize-duration.js"
+    },
+    "moment": {
+      "main": "min/moment-with-locales.min.js"
+    },
+    "angular-timer": {
+      "main": "dist/angular-timer.min.js"
+    },
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.min.css"
+      ]
+    },
+    "bootstrap-ui-datetime-picker": {
+      "main": "dist/datetime-picker.min.js"
+    },
+    "jquery": {
+      "main": "dist/jquery.min.js"
+    },
+    "json3": {
+      "main": "lib/json3.min.js"
+    },
+    "messageformat": {
+      "main": "messageformat.js"
+    },
+    "ng-file-upload": {
+      "main": "ng-file-upload.min.js"
+    },
+    "ngInfiniteScroll": {
+      "main": "build/ng-infinite-scroll.min.js"
+    },
+    "sockjs-client": {
+      "main": "dist/sockjs.min.js"
+    },
+    "stomp-websocket": {
+      "main": "lib/stomp.min.js"
+    },
+    "angular-ui-carousel": {
+      "main": [
+        "dist/ui-carousel.js",
+        "dist/ui-carousel.min.css"
+      ],
+      "dependencies": {
+        "angular": "1.5.8"
+      }
+    },
+    "teljs": {
+      "dependencies": {
+        "angular": "1.5.8"
+      }
+    },
+    "ng-country-select": {
+      "main": "dist/ng-country-select.min.js",
+      "dependencies": {
+        "angular": "1.5.8"
+      }
+    },
+    "checklist-model": {
+      "main": "checklist-model.js",
+      "dependencies": {
+        "angular": "1.5.8"
+      }
+    }
+  },
+  "resolutions": {
+    "angular": "1.5.8",
+    "angular-bootstrap": "2.0.0",
+    "jquery": "3.1.0"
+  }
+}

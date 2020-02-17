@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <changeSet id="00000000000035" author="eze">
+      
+      <addColumn tableName="general_configuration">
+			<column name="detalle" type="varchar(255)">
+            </column>
+      </addColumn>
+      
+      <sql>
+        <![CDATA[
+        insert into general_configuration (config_key, config_value, detalle) values 
+        ('URL_LOTE', 'http://www.equisoftware.com.ar/tdirsitio/sga_internoSGA.php?idcaballo=##ID_CABALLO##&sitio=SGA&categoria=producto_5&opcionficha=SubAltaCaballo', 'Url consumida por el backend para tomar los datos del caballo al crear un evento'),
+        ('URL_CABALLO', 'http://www.equisoftware.com.ar/tdirsitio/sga_internoSGA.php?idcaballo=##ID_CABALLO##&sitio=SGA&sga_idioma=&categoria=Ofertaonline&sitiousuario=ADM&opcionficha=SGAOOL&opcionmenu=&conmenu=no', 'Url consumida por el frontend, html del detalle del caballo'),
+        ('URL_FOTO_CABALLO', 'http://www.equisoftware.com.ar/', 'Url consumida por el frontend, se le concatena el atributo $foto_lista de un caballo para buscar la foto de la tarjeta');
+        ]]>
+      </sql>
+    </changeSet>
+</databaseChangeLog>

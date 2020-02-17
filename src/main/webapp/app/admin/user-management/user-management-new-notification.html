@@ -1,0 +1,76 @@
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;</button>
+    <h4 class="modal-title" id="myUserLabel">Enviar mensaje</h4>
+</div>
+<div class="modal-body">
+    
+    <md-tabs md-dynamic-height md-border-bottom>
+      
+      <!-- MAIL MESSAGE -->
+    
+      <md-tab label="Mail">
+        <md-tab-body>
+          
+          <div class="md-padding">
+		    <h2 class="md-title">Destinatarios</h2>
+		  	<md-chips class="chips-overflow" ng-model="vm.selectedUsers" readonly="true">
+			    <md-chip-template>
+			        {{$chip.firstName}} {{$chip.lastName}}
+					<p>{{$chip.email}}</p>
+			    </md-chip-template>
+			</md-chips>
+		  </div>
+          
+          <form name="mailForm" role="form" novalidate ng-submit="vm.send('MAIL', vm.mailTemplate)" show-validation flex-gt-sm="50" >
+            <div style="padding-left: 10px; height: 100%;" layout="column">
+		        <div class="form-group">
+		            <label class="control-label">Template de mail:</label>
+		            <md-select ng-model="vm.mailTemplate" required aria-label="ShowHideAccountant">
+			          <md-option ng-repeat="template in vm.mailTemplateList" value="{{template.id}}" ng-selected="$first">{{template.date | date:'dd/MM/yy HH:mm'}} - {{template.name}}</md-option>
+			        </md-select>
+		        </div>
+		        <div layout="row">
+			        <button type="submit" ng-disabled="mailForm.$invalid || vm.isSaving" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span>&nbsp;<span>Enviar Mail</span></button>
+		        </div>
+			</div>
+		  </form>
+        </md-tab-body>
+      </md-tab>
+      
+      <!-- PHONE MESSAGE -->
+      
+      <md-tab label="Whatsapp">
+        <md-tab-body>
+          
+          <div class="md-padding">
+		    <h2 class="md-title">Destinatarios</h2>
+		  	<md-chips class="chips-overflow" ng-model="vm.selectedUsers" readonly="true">
+			    <md-chip-template>
+			        {{$chip.firstName}} {{$chip.lastName}}
+					<p>{{$chip.cellPhone}}</p>
+			    </md-chip-template>
+			</md-chips>
+		  </div>
+          
+          <form name="phoneForm" role="form" novalidate ng-submit="vm.send('PHONE', vm.phoneTemplate)" show-validation flex-gt-sm="50" >
+            <div style="padding-left: 10px; height: 100%;" layout="column">
+		        <div class="form-group">
+		            <label class="control-label">Template de whatsapp:</label>
+		            <md-select ng-model="vm.phoneTemplate" required aria-label="ShowHideAccountant">
+			          <md-option ng-repeat="template in vm.phoneTemplateList" value="{{template.id}}" ng-selected="$first">{{template.date | date:'dd/MM/yy HH:mm'}} - {{template.name}}</md-option>
+			        </md-select>
+		        </div>
+		        <div layout="row">
+			        <button type="submit" ng-disabled="phoneForm.$invalid || vm.isSaving" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span>&nbsp;<span>Enviar Whatsapp</span></button>
+		        </div>
+			</div>
+		  </form>
+          
+        </md-tab-body>
+      </md-tab>
+    </md-tabs>
+
+</div>
+<div class="modal-footer"></div>

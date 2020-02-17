@@ -1,0 +1,78 @@
+{
+    "register": {
+        "titleFirstStep": "Registración (Primer paso)",
+        "titleSecondStep": "Registración (Último paso)",
+        "form": {
+            "firstStep": {
+        		"button": "Continuar registración"
+        	},
+            "secondStep": {
+        		"button": "Finalizar registración"
+        	}
+        },
+        "messages": {
+            "validate": {
+                "login": {
+                    "required": "Su nombre de usuario es obligatorio.",
+                    "minlength": "Su nombre de usuario debe tener al menos 1 caracter.",
+                    "maxlength": "Su nombre de usuario no puede tener más de 50 caracteres.",
+                    "pattern": "Su nombre de usuario sólo puede contener letras minúsculas y dígitos."
+                },
+                "name": {
+                    "required": "Su nombre de usuario es obligatorio.",
+                    "maxlength": "Su nombre de usuario no puede tener más de 50 caracteres."
+                },
+                "email": {
+                    "required": "Su email es obligatorio.",
+                    "invalid": "Su email es inválido."
+                },
+                "firstName": {
+                    "required": "Su nombre es obligatorio.",
+                    "maxlength": "Su nombre no puede tener más de 50 caracteres."
+                },
+                "lastName": {
+                    "required": "Su apellido es obligatorio.",
+                    "maxlength": "Su apellido no puede tener más de 50 caracteres."
+                },
+                "dni": {
+                    "required": "Su dni es obligatorio.",
+                    "maxlength": "Su dni no puede tener más de 20 caracteres."
+                },
+                "birthday": {
+                    "required": "Su fecha de nacimiento es obligatoria."
+                },
+                "cellPhone": {
+                    "required": "Su teléfono es obligatorio.",
+                    "maxlength": "Su teléfono no puede tener más de 50 caracteres.",
+                    "invalid": "Su télefono es inválido."
+                },
+                "address": {
+                    "required": "Su dirección es obligatoria.",
+                    "maxlength": "Su dirección no puede tener más de 50 caracteres."
+                },
+                "postalCode": {
+                    "required": "Su código postal es obligatori.",
+                    "maxlength": "Su código postal no puede tener más de 50 caracteres."
+                },
+                "city": {
+                    "required": "Su ciudad es obligatoria.",
+                    "maxlength": "Su ciudad no puede tener más de 50 caracteres."
+                },
+                "userCountry": {
+                    "required": "Su país es obligatorio."
+                },
+                "acceptedConditions": {
+                    "required": "Debe aceptar los términos y condiciones antes de seguir."
+                }
+            },
+            "success": "<strong>¡Usuario creado exitosamente! Ya puede iniciar sesión.</strong> Por favor, revise su correo electrónico para confirmarlo.",
+            "error": {
+                "fail": "<strong>¡El registro ha fallado!</strong> Por favor, inténtelo de nuevo más tarde.",
+                "secondStepFail": "<strong>¡Ha ocurrido un error!</strong> Ingrese con su usuario y complete los datos desde 'Ajustes del Usuario'.",
+                "phoneValidationFail": "<strong>¡Ha fallado la validacion del celular!</strong> Ingrese con su usuario y valide su celular desde 'Ajustes del Usuario'.",
+                "userexists": "<strong>¡El nombre de usuario ya está registrado!</strong> Por favor, escoja otro usuario.",
+                "emailexists": "<strong>¡El correo electrónico ya está en uso!</strong> Por favor, escoja otro email."
+            }
+        }
+    }
+}

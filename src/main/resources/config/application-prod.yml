@@ -1,0 +1,160 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+#
+# This configuration overrides the application.yml file.
+#
+# More information on profiles: http://www.jhipster.tech/profiles/
+# More information on configuration properties: http://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+logging:
+    level:
+        ROOT: DEBUG
+        ar.com.pmp.subastados: DEBUG
+        io.github.jhipster: DEBUG
+
+spring:
+    profiles:
+        active: dev
+        include: swagger
+    devtools:
+        restart:
+            enabled: false
+        livereload:
+            enabled: false
+    jackson:
+        serialization.indent_output: true
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3307/solaguayre_prod?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: ofertasonline
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
+        show-sql: false
+        properties:
+            hibernate.id.new_generator_mappings: true
+            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: false
+            hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.NoDefaultJCacheRegionFactory
+    mail:
+        host: 10.0.0.248
+        port: 25
+        username: ventaonline@solaguayre.com.ar
+        protocol: smtp
+    messages:
+        cache-seconds: 1
+    thymeleaf:
+        cache: false
+
+liquibase:
+    contexts: dev
+
+# ===================================================================
+# To enable SSL, generate a certificate using:
+# keytool -genkey -alias subastados -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+#
+# You can also use Let's Encrypt:
+# https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
+#
+# Then, modify the server.ssl properties so your "server" configuration looks like:
+#
+# server:
+#    port: 8443
+#    ssl:
+#        key-store: keystore.p12
+#        key-store-password: <your-password>
+#        key-store-type: PKCS12
+#        key-alias: subastados
+# ===================================================================
+server:
+    port: 8080
+    compression:
+        enabled: true
+        mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+        min-response-size: 1024
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: http://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+jhipster:
+    http:
+        version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
+    cache: # Cache configuration
+        ehcache: # Ehcache configuration
+            time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
+            max-entries: 10000 # Number of objects in each cache entry
+    # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
+    cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+        allowed-headers: "*"
+        exposed-headers: "Link,X-Total-Count"
+        allow-credentials: true
+        max-age: 1800
+    security:
+        remember-me:
+            # security key (this key should be unique for your application, and kept secret)
+            key: 6c576ffb0165da569249521900c4002d45dc5870
+    mail: # specific JHipster mail property, for standard properties see MailProperties
+        from: ventaonline@solaguayre.com.ar
+        base-url: http://ventaonline.solaguayre.com.ar
+    metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
+        jmx.enabled: true
+        graphite: # Use the "graphite" Maven profile to have the Graphite dependencies
+            enabled: false
+            host: localhost
+            port: 2003
+            prefix: subastados
+        prometheus: # Use the "prometheus" Maven profile to have the Prometheus dependencies
+            enabled: false
+            endpoint: /prometheusMetrics
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            report-frequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queue-size: 512
+
+########## CUSTOM ##########
+
+global:
+  application-public-url: http://ventaonline.solaguayre.com.ar/
+  home-carousel-folder: 'D:\apache-tomcat-8.5.29\webapps\ROOT\content\images\presentacion\'
+  condiciones-carousel-folder: 'D:\apache-tomcat-8.5.29\webapps\ROOT\content\images\condiciones\'
+  home-carousel-file-extension: JPG, jpg
+  pdf-event-folder: 'D:\apache-tomcat-8.5.29\webapps\ROOT\eventos\'
+admin:
+  mail: info@solaguayre.com.ar
+
+notifications:
+  whatsapp:
+    enabled: true
+    waboxapp:
+      send:
+        text: https://www.waboxapp.com/api/send/chat
+        link: https://www.waboxapp.com/api/send/link
+      token: 8e06a2bd1efe2800351302e12440f0de5ae33bbfd5940
+      uid: 5491162708293
+
+

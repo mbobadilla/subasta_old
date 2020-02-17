@@ -1,0 +1,168 @@
+<style>
+.event-management-modal-window .modal-dialog {
+  width: 1400px;
+}
+</style>
+
+<form name="eventForm" role="form" novalidate show-validation ng-submit="vm.save()">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserLabel" data-translate="eventManagement.home.createOrEditLabel">
+            Create or edit a User</h4>
+    </div>
+    
+	<md-tabs md-dynamic-height md-border-bottom>
+	    
+	    <md-tab label="Detalle">
+		  <md-tab-body >
+	
+			<div layout-gt-sm="column" style="height: 550px;">
+	            <div style="padding-left: 10px; padding-right: 10px; padding-top: 5px;" layout="column">
+	            
+			        <div class="form-group" >
+			            <label class="control-label" for="id">Id</label>
+			            <input class="form-control" type="text" id="id" name="id" ng-model="vm.event.id" disabled>
+			        </div>
+			        <div class="form-group" >
+			            <label class="control-label" for="name">Nombre</label>
+			            <input class="form-control" type="text" id="name" name="name" ng-model="vm.event.name" ng-maxlength="255" tabindex="0" required>
+			        </div>
+			        
+			        <div layout="row" class="form-group" >
+	        			<div class="form-group" style="margin: 5px;" flex>
+				            <label class="control-label" for="initDate">Fecha de Inicio</label>
+		        			<input style="z-index: 1000" class="form-control" autocomplete="off" id="min-date" start-view="month"
+		        				ng-model="vm.event.initDate" moment-picker="vm.event.initDate" locale="es" 
+		        				format="DD/MM/YYYY HH:mm" max-date="vm.event.endDate" tabindex="1">
+				        </div>
+			        </div>
+			        <div layout="row" class="form-group" >
+	        			<div class="form-group" style="margin: 5px;" flex>
+				            <label class="control-label" for="endDate">Fecha de Fin</label>
+		        			<input style="z-index: 1000" class="form-control" autocomplete="off" id="max-date" start-view="month"
+		        				ng-model="vm.event.endDate" moment-picker="vm.event.endDate" locale="es" 
+		        				format="DD/MM/YYYY HH:mm" min-date="vm.event.initDate" tabindex="2">
+				        </div>
+			        </div>
+			        
+			        <div class="form-group" >
+				        <label class="control-label" for="body">notificateLastMinutes</label>
+				        <input class="form-control" type="number" id="notificateLastMinutes" name="notificateLastMinutes" ng-model="vm.event.notificateLastMinutes" required min=0>
+			        </div>
+			        
+			        <div class="form-group" >
+				        <label class="control-label" for="body">Tipo de Finalización</label>
+				        <md-radio-group ng-model="vm.event.type">
+					      <md-radio-button value="INDEPENDIENTE" class="md-primary">INDEPENDIENTE</md-radio-button>
+					      <md-radio-button value="ESCALONADO" class="md-primary">ESCALONADO</md-radio-button>
+					    </md-radio-group>
+			        </div>
+				</div>
+			</div>
+		  </md-tab-body>
+		</md-tab>
+		
+		<!-- LOTES -->
+		
+		<md-tab label="Lotes">
+		  <md-tab-body>
+			<div layout-gt-sm="column" style="height: 550px;">
+	           	<div>
+	           		<div class="row">
+						<div class="col-md-4" style="padding-top: 4px">
+							<button class="btn btn-primary" type="button" ng-click="vm.newLote();">
+								<span class="glyphicon glyphicon-flash"></span><span>Nuevo Lote</span>
+							</button>
+						</div>
+					</div>
+		           	<table class="jh-table table table-striped" >
+			            <thead>
+			              <tr>
+			                <th><span>ID</span></th>
+			                <th><span>Orden</span></th>
+			                <th><span>Id de Caballo</span></th>
+			                <th><span>Nombre</span></th>
+			                <th><span>Precio Inicial</span></th>
+			                <th><span>Minutos a incrementar</span></th>
+			                <th><span>Periodo de incremento</span></th>
+			                <th></th>
+			              </tr>
+			            </thead>
+			            <tbody>
+			              <tr ng-repeat="lote in vm.lotes.slice(((vm.page-1) * vm.itemsPerPage), ((vm.page)*vm.itemsPerPage))" ng-click="vm.lote = lote">
+			                <td>{{lote.id}}</td>
+			                <td>{{lote.orden}}</td>
+			                <td>{{lote.product.$idcaballo}}</td>
+			                <td>{{lote.product.$nombre}}</td>
+			                <td>{{lote.initialPrice}}</td>
+			                <td>{{lote.minutesToIncrement}}</td>
+			                <td>{{lote.incrementPeriod}}</td>
+			                <td>
+			                  <a ng-click="vm.deleteLote($index, lote);">
+								<span class="glyphicon glyphicon-flash"></span><span>Borrar Lote</span>
+							  </a>
+			                </td>
+			              </tr>
+			            </tbody>
+			        </table>
+			        <div class="text-center">
+				        <uib-pagination  total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" max-size="3" num-pages="vm.numPages" ></uib-pagination>
+				    </div>
+			    </div>
+		  		
+		  		<md-divider></md-divider>
+				
+		            <div style="padding-left: 10px;padding-top: 4px" layout="column">
+				        <div layout="column">
+					        <div layout="row" >
+						        <div class="form-group" style="margin: 4px;" flex>
+						            <label class="control-label">Orden</label>
+						            <input class="form-control" type="number" ng-model="vm.lote.orden" min="0">
+						        </div>
+						        <div class="form-group" style="margin: 4px;" flex>
+						            <label class="control-label">Id de Caballo</label>
+						            <input class="form-control" type="text" ng-model="vm.lote.product.$idcaballo" >
+						        </div>
+						        <div class="form-group" style="margin: 4px;" flex>
+						            <label class="control-label">Precio inicial</label>
+						            <input class="form-control" type="number" ng-model="vm.lote.initialPrice" min="0">
+						        </div>
+					        </div>
+				        </div>
+				        <div layout="column">
+					        <div layout="row" >
+						        <div class="form-group" style="margin: 4px;" flex>
+						            <label class="control-label">Minutos a incrementar</label>
+						            <input class="form-control" type="number" ng-model="vm.lote.minutesToIncrement" min="0">
+						        </div>
+						        <div class="form-group" style="margin: 4px;" flex>
+						            <label class="control-label">Periodo de incremento</label>
+						            <input class="form-control" type="number" ng-model="vm.lote.incrementPeriod" min="0">
+						        </div>
+					        </div>
+				        </div>
+				        <div layout="column">
+					        <div layout="row" >
+						        <div class="form-group" style="margin: 4px;" flex>
+						            <label class="control-label">Destacado</label>
+						            <textarea class="form-control" rows="2" ng-model="vm.lote.product.$destacado"></textarea>
+						        </div>
+					        </div>
+				        </div>
+					</div>
+			</div>
+		  </md-tab-body>
+	    </md-tab>
+	</md-tabs>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="eventForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

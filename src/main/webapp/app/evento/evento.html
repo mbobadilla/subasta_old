@@ -1,0 +1,243 @@
+<section id="main-content" class="listings" style="margin-right:0px; margin-left: 0px; margin: 0;padding: 0;">
+	<div class="wrapper" id="lista" style="margin: 0px;padding: 0px;margin-top: 20px;padding-top: 20px;">
+	<div ng-switch="vm.isAuthenticated() && vm.evento.active && !vm.account.lastEventParticipant">
+	        <div id="boxsombra" ng-switch-when="true">
+				<div class="row">
+					<div class="text-center">
+						<span data-translate="global.home.participate" style="font-weight: bold; font-size: 14px; text-transform: uppercase;">
+						Participe de nuestra pr&oacute;xima venta online
+						</span><br/>                                                             
+					</div>
+				</div>
+				<div class="row">
+					<div class="text-center">
+						<div>
+							<button data-translate="global.home.participar" type="button" ng-click="participar()" style="height: 35px;margin: 15px 5px;width: 100px; font-size: 18px;" class="btn btn-danger">
+								Participar
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+		<ul class="properties_list">
+			
+			<li ng-repeat="lote in vm.evento.lotes" style="margin: 0px;height: 600px;">
+				<md-card class="productCard" style="background:rgb(224, 228, 230); max-width:330px;">
+					<md-card-header-text style="background-color:#1a2732;">
+           				<div ng-show="vm.isStarted && !vm.loteExpired[lote.id] && !vm.waiting[lote.id]">
+	           				<span class="md-title" style="font-size: 15px;">
+		           				<timer end-time="vm.loteEndTime[lote.id].time" finish-callback="timerFinishCallback(lote.id)" id="timer-{{lote.id}}">
+		            				<div style="color:{{vm.loteEndTime[lote.id].color}};" id="clockdiv">
+										{{days}} <div style="display: inline;" data-translate="global.event.days"> D&iacute;as </div>
+										{{hours}} <div style="display: inline;" data-translate="global.event.hours"> Horas </div>
+										{{minutes}} <div style="display: inline;" data-translate="global.event.minutes"> Min. </div>
+										{{seconds}} <div style="display: inline;" data-translate="global.event.seconds"> Seg. </div>
+									</div>
+		           				</timer>
+	           				</span>
+           				</div>
+           				<div ng-show="!vm.loteExpired[lote.id] && vm.waiting[lote.id]">
+           					<span class="md-title" style="font-size: 15px;">
+		            				<div style="background-color: green;" id="clockdiv">
+										LOTE EN ESPERA
+									</div>
+	           				</span>
+           				</div>
+           				<div ng-show="vm.loteExpired[lote.id]">
+           					<span class="md-title" style="font-size: 15px;">
+		            				<div data-translate="global.event.closedBid" style="background-color: red;" id="clockdiv">
+										LOTE FINALIZADO
+									</div>
+	           				</span>
+           				</div>
+           				<div ng-show="!vm.isStarted && !vm.loteExpired[lote.id]">
+           					<span class="md-title" style="font-size: 15px;">
+									<div  style="background-color: red;" id="clockdiv">
+										<div>Apertura: {{vm.initDate | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
+										<div>Cierre: {{vm.endDate | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
+									</div>
+	           				</span>
+           				</div>
+         				</md-card-header-text>
+         				<div style="max-width: 330px; max-height: 275px;">
+				    		<img src="{{vm.urlFotoCaballo}}{{lote.product.$foto_lista}}" alt="" ng-click="showDetail(lote.product.$idcaballo, lote.id)">
+				    	</div>
+				    <md-card-content class="cardProducto" style="padding:8px;padding-top:0px;">
+ 							<table class="table" style="margin-bottom: 0px;">
+ 								<tbody>
+ 									<tr>
+							        <td style="padding: 0px;vertical-align: middle;">
+				      					<h2 style="font-family:serif;color: #1a2732;font-size:1em;font-weight:400;color:#222;margin-top: 12px;margin-bottom: 5px;">
+				      						<b>{{lote.product.$nombre}}</b>
+				      					</h2>
+				      				</td>
+				      				<td style="padding: 0px;">
+				      					<md-card-actions style="margin-left:0;" layout="row" layout-align="start center">
+											<div style="margin-left:auto; margin-right:0;">
+									          <md-card-icon-actions ng-switch="!!lote.product.$youtube">
+										          <div class="video-link" style="margin-left:10px;" ng-switch-when="true"> 
+						 						  		<a ui-sref="evento.youtube({video:lote.product.$youtube, loteId:lote.id})" class="launch-modal" data-modal-id="modal-video">
+						 								   <img src="content/images/youtube-icon.png">  
+						 								</a> 
+						  						  </div>
+						  						  <div style="margin-left:10px;"> 
+						 						  		<a ng-click="showDetail(lote.product.$idcaballo, lote.id)" class="launch-modal" data-modal-id="modal-info" >
+						 								   <img src="content/images/info_icon.png">  
+						 								</a> 
+						  						  </div>
+<!-- 							  						  <div style="margin-left:10px;" ng-switch-when="true">  -->
+<!-- 							 						  		<a ng-click="shareDetail()"> -->
+<!-- 							 								   <img src="content/images/share_icon.png">   -->
+<!-- 							 								</a>  -->
+<!-- 							  						  </div> -->
+												  <li  ui-sref-active="active" uib-dropdown class="dropdown pointer">
+							        				 <a style="margin-left: 5px;padding-right: 0;" class="dropdown-toggle" uib-dropdown-toggle>
+									                      <img src="content/images/share_icon.png">  
+									                  </a>
+									                  <ul class="dropdown-menu" style="background-color:transparent;min-width: 0px;border: 0;">
+									                  	<li>
+									                  	 <a style="padding-left: 8px;padding-right: 8px;" ng-click="shareOnFacebook(lote.product.$youtube)">
+									                  		<img src="content/images/facebook.png"> 
+								                		 </a>	
+								              			</li>
+								              			<li>
+									                  	 <a style="padding-left: 8px;padding-right: 8px;" ng-click="shareOnTwitter(lote.product.$youtube)">
+									                  		<img src="content/images/twitter.png"> 
+								                		 </a>	
+								              			</li>
+								              			<li>
+									                  	 <a style="padding-left: 8px;padding-right: 8px;" ng-click="shareOnWhatsapp(lote.product.$youtube)">
+									                  		<img src="content/images/whatsapp.png"> 
+								                		 </a>	
+								              			</li>
+									                  </ul>
+						                  		  </li>
+									          </md-card-icon-actions>
+											</div>
+				        				 </md-card-actions>
+				      				</td>
+				      			</tr>
+				      			<tr>
+							    	<td colspan="2" style="border: 0;white-space: normal;padding: 0;">
+							    		<md-switch ng-disabled="!vm.isStarted || vm.loteExpired[lote.id]" style="margin:0;" 
+							    			ng-change="onFollowClick(lote.id, vm.followLote[lote.id])" class="md-primary" 
+							    			name="followLote" ng-model="vm.followLote[lote.id]">
+							    			
+         					 				<span style="font-size: 11px; font-weight: bold;" data-translate="global.event.receiveNotifications">
+         					 					Recibir notificaciones
+         					 				</span>
+        								</md-switch>
+							    	</td>
+							    </tr>
+				      		</tbody>
+				      	</table>
+				     
+   					  <div style="width: 100%;border: 0;margin-top: 10px;" class="table-responsive">
+ 							<table class="table" style="margin-bottom: 10px;">
+ 								<tbody>
+ 									<tr>
+							        <td style="border: 0;white-space: normal;padding: 0;">
+								        <md-input-container style="margin-bottom:0px;">
+							        		<label data-translate="global.event.currentBid" style="font-weight:bold;width: 100%;">Oferta Actual (USD)</label>
+							        		<div ng-if="vm.isStarted && !lote.lastBid">
+							        			<input type="text" ng-model="lote.initialPrice" readonly="readonly">
+							        		</div>
+							        		<div ng-if="vm.isStarted && lote.lastBid">
+							        			<input type="text" ng-model="lote.lastBid.price" readonly="readonly">
+							        		</div>
+							        		<div ng-if="!vm.isStarted">
+							        			<input type="text" value="-----" readonly="readonly">
+							        		</div>
+							      		</md-input-container>
+							        </td>
+							        <td style="border: 0;white-space: normal;padding: 0;" has-any-authority="ROLE_ADMIN">
+								        <li ui-sref-active="active" uib-dropdown class="dropdown pointer">
+					        				 <a style="margin-left: -10px;padding-right: 0;" class="dropdown-toggle" uib-dropdown-toggle>
+							                      <md-button class="md-raised md-warn">
+							                       	ADMIN
+							                      </md-button>  
+							                 </a>
+							                 <ul class="dropdown-menu" style="background-color:#f4eeee;min-width: 0px;border: 0;">
+							                  	<li>
+									  				<a style="padding-left: 8px;padding-right: 8px;font-size: 10px;"  ng-disabled="!vm.isStarted" ui-sref="evento.lastestOffers({loteId: lote.id, nombreCaballo: lote.product.$nombre})">
+								                  		OFERTAS
+							                		</a>	
+						              			</li>
+						              			</li>
+						              			<li>
+										  			<a style="padding-left: 8px;padding-right: 8px;font-size: 10px;"  ng-disabled="!vm.isStarted" ng-click="postponseLote(lote.id)" >
+								                  		POSPONER
+							                		</a>	
+						              			</li>
+						              			<li>
+							                  	 <a style="padding-left: 8px;padding-right: 8px;font-size: 10px;"  ng-disabled="!vm.isStarted" ng-click="deleteLastBid(lote.id)" >
+								                  		BORRAR OFERTA
+							                		</a>	
+						              			</li>
+							                 </ul>
+							            </li>
+							        
+							        </td>
+						        </tr>
+						        <tr>
+							        <td style="border: 0;white-space: normal;padding: 0;">
+							        <form name="myForm{{lote.id}}">
+								        <md-input-container ng-show="!vm.loteExpired[lote.id]" style="margin:0px;margin-top:5px;" class="md-icon-float md-icon-right md-block">
+									  	 	<label data-translate="global.event.newBid" style="font-weight:bold;width: 100%">Nueva Oferta (USD)</label>
+									  	 	<div ng-if="vm.isStarted && !lote.lastBid">
+			  									<input required name="myInput{{lote.id}}" min="{{vm.ofertaMinima[lote.id]}}" style="background-color: #f4eeee;" ng-model="vm.oferta[lote.id]" type="number" ng-init="vm.oferta[lote.id]=nuevaOferta(lote.initialPrice, lote.id)" step="100">
+			  								</div>
+			  								<div ng-if="vm.isStarted && lote.lastBid">
+			  									<input required name="myInput{{lote.id}}" min="{{vm.ofertaMinima[lote.id]}}" style="background-color: #f4eeee;" ng-model="vm.oferta[lote.id]" type="number" ng-init="vm.oferta[lote.id]=nuevaOferta(lote.lastBid.price, lote.id)" step="{{lote.lastBid.price < 10000 ? 100 : 1000 }}">
+			  								</div>
+			  								<div ng-if="!vm.isStarted">
+							        			<input type="text" value="-----" readonly="readonly">
+							        		</div>
+			  								<div ng-messages="myForm{{lote.id}}.myInput{{lote.id}}.$invalid">
+										          <div ng-show="myForm{{lote.id}}.myInput{{lote.id}}.$error.min || myForm{{lote.id}}.myInput{{lote.id}}.$error.required" data-translate="global.event.minBid"  translate-values="{ofertaMinima: '{{vm.ofertaMinima[lote.id]}}'}" ng-message="min">
+										            	La oferta debe ser igual o superior a 
+										          </div>
+											</div>
+									  	</md-input-container>
+									</form>
+							        </td>
+							     	<td style="border: 0;white-space: normal;padding: 0;">
+								        <md-button ng-disabled="!vm.isStarted || myForm{{lote.id}}.$invalid" data-translate="global.event.bid" ng-show="!vm.loteExpired[lote.id]" class="md-raised md-primary" ui-sref="evento.bid({loteId: lote.id, price: vm.oferta[lote.id], userLogin: vm.account.login, nombre:lote.product.$nombre, loteNro:lote.product.$loteNro})">
+									  		Ofertar 
+							  			</md-button> 
+							        </td>
+							    </tr>
+							    <tr>
+							    	<td colspan="2" style="border: 0;text-align: center;white-space: normal;padding: 0;">
+							    		<div ng-if="vm.isStarted">
+											<p style="font-style:italic;color:{{vm.loteMessage[lote.id].color}};font-weight: bold;" layout-align="start center"> 
+		 										{{vm.loteMessage[lote.id].message}}
+	 					  					</p>
+ 					  					</div>
+ 					  					<div ng-if="vm.loteExpired[lote.id] && vm.account && vm.account.login == lote.lastBid.userLogin">
+ 					  						<p data-translate="global.event.messageBid1" style="font-style:italic;color:#088A08;font-weight: bold;" layout-align="start center"> 
+		 										Usted es el ganador de la oferta
+	 					  					</p>
+ 					  					</div>
+							    	</td>
+							    </tr>
+ 								</tbody>
+						  </table>
+   					  </div>
+				      <p style="text-align: center;font-size: 12px; font-weight: bold;">
+				       	{{lote.product.$sexo}} - {{lote.product.$fecha_nacimiento}}
+				      </p>
+				      <p style="text-align: center;font-size: 12px; font-weight: bold; height:40px;">
+				       	{{lote.product.$comentario_breve}}
+				      </p>
+<!-- 					  <p style="height:90px;"><b>{{lote.product.$destacado}}</b></p>					       -->
+				    </md-card-content>
+				    
+				</md-card>
+ 
+			</li>
+		</ul>
+									  				
+	</div>
+</section>	<!--  end listing section  -->

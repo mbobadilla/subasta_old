@@ -1,0 +1,272 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserLabel" data-translate="userManagement.home.createOrEditLabel">
+            Create or edit a User</h4>
+    </div>
+    <div class="modal-body" style="padding-bottom: 5px;">
+    	<div layout-gt-sm="row" layout-sm="column" layout-xs="column" class="row">    
+	    		<div flex-gt-sm="30" flex-sm="30" flex-xs="100" flex-order-xs="1" style="margin: 8px;">
+			        <div class="form-group" ng-show="vm.user.id">
+			            <label data-translate="global.field.id">ID</label>
+			            <input type="text" class="form-control" name="id"
+			                   ng-model="vm.user.id" readonly>
+			        </div>
+			
+			        <div class="form-group">
+			            <label class="control-label" data-translate="userManagement.login">Login</label>
+			            <input type="text" class="form-control" name="login"
+			                   ng-model="vm.user.login" required ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/">
+			
+			            <div ng-show="editForm.login.$invalid">
+			                <p class="help-block"
+			                   ng-show="editForm.login.$error.required" data-translate="entity.validation.required">
+			                    This field is required.
+			                </p>
+			
+			                <p class="help-block"
+			                   ng-show="editForm.login.$error.maxlength" data-translate="entity.validation.maxlength"
+			                   translate-value-max="50">
+			                    This field cannot be longer than 50 characters.
+			                </p>
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="control-label" data-translate="userManagement.firstName">First Name</label>
+			            <input type="text" class="form-control" name="firstName"
+			                   ng-model="vm.user.firstName" ng-maxlength="50">
+			
+			            <div ng-show="editForm.firstName.$invalid">
+			                <p class="help-block"
+			                   ng-show="editForm.firstName.$error.maxlength" data-translate="entity.validation.maxlength"
+			                   translate-value-max="50">
+			                    This field cannot be longer than 50 characters.
+			                </p>
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label data-translate="userManagement.lastName">Last Name</label>
+			            <input type="text" class="form-control" name="lastName"
+			                   ng-model="vm.user.lastName" ng-maxlength="50">
+			
+			            <div ng-show="editForm.lastName.$invalid">
+			                <p class="help-block"
+			                   ng-show="editForm.lastName.$error.maxlength" data-translate="entity.validation.maxlength"
+			                   translate-value-max="50">
+			                    This field cannot be longer than 50 characters.
+			                </p>
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label class="control-label" data-translate="userManagement.email">Email</label>
+			            <input type="email" class="form-control" name="email"
+			                   ng-model="vm.user.email" required ng-maxlength="100">
+			
+			            <div ng-show="editForm.email.$invalid">
+			                <p class="help-block"
+			                   ng-show="editForm.email.$error.required" data-translate="entity.validation.required">
+			                    This field is required.
+			                </p>
+			
+			                <p class="help-block"
+			                   ng-show="editForm.email.$error.maxlength" data-translate="entity.validation.maxlength"
+			                   translate-value-max="100">
+			                    This field cannot be longer than 100 characters.
+			                </p>
+							<p class="help-block"
+			                   ng-show="editForm.email.$error.email" data-translate="global.messages.validate.email.invalid">
+			                    Your email is invalid.
+			                 </p>
+			            </div>
+			        </div>
+			        <div class="checkbox">
+						   <label for="emailValid">
+						           <!-- ng-model directive -->
+						     <input  id="emailValid" name="emailValid" type="checkbox" ng-model="vm.user.emailValid">
+						     <span data-translate="global.form.emailValid">Email Valid</span>
+						   </label>
+				 	</div> 
+			        <div class="checkbox">
+				          <label for="emailNotifications">
+			                   <!-- ng-model directive -->
+				            <input id="emailNotifications" name="emailNotifications" type="checkbox" ng-model="vm.user.emailNotifications">
+				            <span data-translate="global.form.emailNotifications">Email Notifications</span>
+				          </label>
+					</div>
+					<div class="form-group">
+			            <label data-translate="userManagement.profiles">Profiles</label>
+			            <select class="form-control" multiple name="authority" ng-model="vm.user.authorities"
+			                    ng-options="authority for authority in vm.authorities">
+			            </select>
+			        </div>
+			    </div>
+			    <div flex-gt-sm="30" flex-sm="30" flex-xs="100" flex-order-xs="2" style="margin: 8px;">
+			    	<div class="form-group">
+			               <label class="control-label" for="comments" data-translate="userManagement.comments">Comments</label>
+			               <textarea class="form-control" id="message" name="message" placeholder="{{'userManagement.comments' | translate}}"
+											ng-model="vm.user.comments"  ng-maxlength=1024>
+						   </textarea>
+			            
+			        </div>
+					<div class="form-group">
+			               <label class="control-label" for="dni" data-translate="global.form.dni">Dni</label>
+			               <input type="text" class="form-control" id="dni" name="dni" placeholder="{{'global.form.dni.placeholder' | translate}}"
+			                      ng-model="vm.user.dni" ng-minlength=1 ng-maxlength=20 >
+			               <div ng-show="editForm.dni.$dirty && editForm.dni.$invalid">
+			                   <p class="help-block"
+			                          ng-show="editForm.dni.$error.required" data-translate="global.messages.validate.dni.required">
+			                       Your identification number is required
+			                   </p>
+			                   <p class="help-block"
+			                          ng-show="editForm.dni.$error.maxlength" data-translate="global.messages.validate.dni.maxlength">
+			                       Your identification number cannot be longer than 20 characters.
+			                   </p>
+			               </div>
+			        </div>
+			        <div class="form-group">
+				           <label class="control-label" for="birthday" data-translate="global.form.birthday">Birthday</label>
+				           <input type="date" class="form-control" id="birthday" name="birthday" placeholder="{{'global.form.birthday.placeholder' | translate}}"
+				                  ng-model="vm.user.birthday" >
+				           <div ng-show="editForm.birthday.$dirty && editForm.birthday.$invalid">
+				               <p class="help-block"
+				                      ng-show="editForm.birthday.$error.required" data-translate="global.messages.validate.birthday.required">
+				                   Your birthday is required.
+				               </p>
+				           </div>
+				    </div>
+			    	<div class="form-group">
+				           <label class="control-label" for="cellPhone" data-translate="global.form.cellPhone">Phone number</label>
+				           <input type="tel" class="form-control" id="cellPhone" name="cellPhone" placeholder="{{'global.form.cellPhone.placeholder' | translate}}"
+				                  ng-model="vm.user.cellPhone" >
+				           <div ng-show="editForm.cellPhone.$dirty && editForm.cellPhone.$invalid">
+				               <p class="help-block"
+				                      ng-show="editForm.cellPhone.$error.required" data-translate="global.messages.validate.cellPhone.required">
+				                   Your phone is required.
+				               </p>
+				               <p class="help-block"
+				                      ng-show="editForm.cellPhone.$error && !editForm.cellPhone.$error.required" data-translate="global.messages.validate.cellPhone.invalid">
+				                   Your cellphone is invalid.
+				               </p>
+				           </div>
+				     </div>
+				     <div class="checkbox">
+						   <label for="phoneValid">
+						           <!-- ng-model directive -->
+						     <input id="phoneValid" name="phoneNotifications" type="checkbox" ng-model="vm.user.phoneValid">
+						     <span data-translate="global.form.phoneValid">Phone Valid</span>
+						   </label>
+				 	 </div>  
+				     <div class="checkbox">
+						   <label for="phoneNotifications">
+						           <!-- ng-model directive -->
+						     <input  id="phoneNotifications" name="phoneNotifications" type="checkbox" ng-model="vm.user.phoneNotifications">
+						     <span data-translate="global.form.phoneNotifications">Phone Notifications</span>
+						   </label>
+				 	 </div>
+				       
+				     <div class="form-group">
+				           <label class="control-label" for="address" data-translate="global.form.address">Address</label>
+				           <input type="text" class="form-control" id="address" name="address" placeholder="{{'global.form.address.placeholder' | translate}}"
+				                  ng-model="vm.user.address" ng-minlength=1 ng-maxlength=255 >
+				           <div ng-show="editForm.address.$dirty && editForm.address.$invalid">
+				               <p class="help-block"
+				                      ng-show="editForm.address.$error.required" data-translate="global.messages.validate.address.required">
+				                   Your address is required
+				               </p>
+				               <p class="help-block"
+				                      ng-show="editForm.address.$error.maxlength" data-translate="global.messages.validate.address.maxlength">
+				                   Your address cannot be longer than 255 characters.
+				               </p>
+				           </div>
+				      </div> 
+			    </div>
+			    <div flex-gt-sm="30" flex-sm="30" flex-xs="100" flex-order-xs="3" style="margin: 8px;">
+				    
+				       <div class="form-group">
+			                    <label class="control-label" for="postalCode" data-translate="global.form.postalCode">Postal Code</label>
+			                    <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="{{'global.form.postalCode.placeholder' | translate}}"
+			                           ng-model="vm.user.postalCode" ng-minlength=1 ng-maxlength=255 >
+			                    <div ng-show="editForm.postalCode.$dirty && editForm.postalCode.$invalid">
+			                        <p class="help-block"
+			                               ng-show="editForm.postalCode.$error.required" data-translate="register.messages.validate.postalCode.required">
+			                            Your postalCode is required
+			                        </p>
+			                        <p class="help-block"
+			                               ng-show="editForm.postalCode.$error.maxlength" data-translate="register.messages.validate.postalCode.maxlength">
+			                            Your postalCode cannot be longer than 255 characters.
+			                        </p>
+			                    </div>
+			          </div> 
+			          <div class="form-group">
+			              <label class="control-label" for="city" data-translate="global.form.city">PoCity</label>
+			              <input type="text" class="form-control" id="city" name="city" placeholder="{{'global.form.city.placeholder' | translate}}"
+			                     ng-model="vm.user.city" ng-minlength=1 ng-maxlength=255 >
+			              <div ng-show="editForm.city.$dirty && editForm.city.$invalid">
+			                  <p class="help-block"
+			                         ng-show="editForm.city.$error.required" data-translate="register.messages.validate.city.required">
+			                      Your city is required
+			                  </p>
+			                  <p class="help-block"
+			                         ng-show="editForm.city.$error.maxlength" data-translate="register.messages.validate.city.maxlength">
+			                      Your city cannot be longer than 255 characters.
+			                  </p>
+			              </div>
+			          </div> 
+			          <div class="form-group">
+			              <label class="control-label" for="userCountry" data-translate="global.form.userCountry">Country</label>
+			              <country-select   style="display: block;width:100%;" id="userCountry" name="userCountry" ng-model="vm.user.userCountry" cs-priorities="AR, UY, PE, EC, PY, BR" cs-required original-template>
+			              </country-select>
+			              <div ng-show="editForm.userCountry.$dirty && editForm.userCountry.$invalid">
+			                  <p class="help-block"
+			                         ng-show="editForm.userCountry.$error.required" data-translate="register.messages.validate.userCountry.required">
+			                      Your country is required
+			                  </p>
+			              </div>
+			          </div>                      
+				 
+				      <div class="checkbox">
+						   <label for="acceptedConditions">
+						           <!-- ng-model directive -->
+						     <input  id="acceptedConditions" name="acceptedConditions" type="checkbox" ng-model="vm.user.acceptedConditions" required>
+						     <span data-translate="global.form.acceptedConditions">Terms and Condition Agreed</span>
+						   </label>
+				 	  </div>
+			          <div class="form-group">
+				            <label for="activated">
+				                <input ng-disabled="vm.user.id === null" type="checkbox" id="activated" name="activated" ng-model="vm.user.activated">
+				                <span data-translate="userManagement.activated">Activated</span>
+				            </label>
+			          </div>
+			
+					<div class="form-group">
+			               <label class="control-label" for="presentedBy" data-translate="global.form.presentedBy">Presented By</label>
+			               <input type="text" class="form-control" id="presentedBy" name="presentedBy" placeholder="{{'global.form.presentedBy.placeholder' | translate}}"
+			                      ng-model="vm.user.presentedBy" ng-maxlength=255>
+			            
+			        </div>
+			
+			        <div class="form-group">
+			            <label data-translate="userManagement.langKey">Lang Key</label>
+			            <select class="form-control" name="langKey" ng-model="vm.user.langKey"
+			                    ng-options="language as language for language in vm.languages track by language">
+			            </select>
+			        </div>
+			
+			    </div>
+			    
+		</div>
+		<jhi-alert-error></jhi-alert-error>
+    </div>
+    <div class="modal-footer">
+    	
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

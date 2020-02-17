@@ -1,0 +1,24 @@
+<form name="deleteForm" ng-submit="vm.save()">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" data-translate="entity.bid.title">Confirm the bid</h4>
+    </div>
+    <div class="modal-body">
+        <div class="alerts" ng-show="vm.isError">
+        	<div class="top right"> 
+				<uib-alert><pre>{{vm.error}}</pre></uib-alert> 
+			</div>
+		</div>
+                  
+        <p data-translate="global.messages.newbid.question" translate-values="{price: '{{vm.price}}', nombre: '{{vm.nombre}}'}">Are you sure you want to confirm the bid</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" class="btn btn-primary" ng-disabled="vm.isSaving">
+            <span data-translate="entity.action.bid">Ofertar</span>
+        </button>
+    </div>
+</form>

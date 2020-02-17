@@ -1,0 +1,23 @@
+{
+    "eventManagement": {
+        "home": {
+            "title": "Administración de Eventos",
+            "createLabel": "Crear un nuevo Evento",
+            "createOrEditLabel": "Editar Evento"
+        },
+        "created": "A new event is created with identifier {{ param }}",
+        "updated": "An event is updated with identifier {{ param }}",
+        "deleted": "An event is deleted with identifier {{ param }}",
+        "delete": {
+            "question": "¿Seguro que quieres eliminar el evento {{ name }}?"
+        },
+        "detail": {
+            "title": "Evento"
+        },
+        "name": "Nombre",
+        "initDate": "Fecha de inicio",
+        "endDate": "Fecha de fin",
+        "cellPhone": "Teléfono celular",
+        "message": "Mensaje"
+    }
+}

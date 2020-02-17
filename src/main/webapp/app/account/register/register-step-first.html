@@ -1,0 +1,184 @@
+
+
+
+<div class="register-main row">
+    <div class="col-md-8 col-md-offset-2">
+        <div>
+            <h2 data-translate="register.titleFirstStep">Registration</h2>
+            
+            <section>
+				<h6><b>IMPORTANTE:</b></h6>
+				<ul style="font-style: italic;font-size: small;">
+				  <li>Primer paso, para registrarse ingrese los datos y haga click en continuar.</li>
+				  <li>Al terminar el primer paso, su usuario ya se encontrar&aacute; registrado.</li>
+				  <li>En el siguiente paso de su registraci&oacute;n se solicitar&aacute; el ingreso del c&oacute;digo que recibi&oacute; por whatsapp, de esta manera se valida su celular para recibir notificaciones.</li>
+				</ul> 
+			</section>
+  
+            <div class="alert alert-danger" ng-show="vm.error" data-translate="register.messages.error.fail">
+                <strong>Registration failed!</strong> Please try again later.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.errorUserExists" data-translate="register.messages.error.userexists">
+                <strong>Login name already registered!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.errorEmailExists" data-translate="register.messages.error.emailexists">
+                <strong>Email is already in use!</strong> Please choose another one.
+            </div>
+
+            <div class="alert alert-danger" ng-show="vm.doNotMatch" data-translate="global.messages.error.dontmatch">
+                The password and its confirmation do not match!
+            </div>
+        </div>
+        
+    </div>
+  
+  
+    <div class="col-md-4 col-md-offset-2">
+      <form name="form" ng-show="!vm.success" role="form" novalidate ng-submit="vm.registerFirstStep()" show-validation>
+        
+        <div class="form-group">
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		    	<div class="col-md-3">
+		            <label class="control-label" for="login" data-translate="global.form.username">Username</label>
+		        </div>
+		        <div class="col-md-7">
+		            <input class="form-control" type="text" id="login" name="login" ng-model="vm.registerAccount.login" ng-maxlength="50" ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+		        </div>
+		           
+			</div>
+			<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+				 <div ng-messages="form.login.$error" ng-show="form.login.$dirty && form.login.$invalid" >
+			              <div class="help-block" ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required" >Your username is required.</div>
+			              <div class="help-block" ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength" >Your username cannot be longer than 50 characters.</div>
+			              <div class="help-block" ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern" >Your username can only contain letters and digits.</div>
+			     </div>
+			</div>
+		</div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		        <div class="col-md-3">
+		            <label class="control-label" for="email" data-translate="global.form.email">Email</label>
+		        </div>
+		        <div class="col-md-7">
+	            	<input class="form-control" type="email" id="email" name="email" ng-model="vm.registerAccount.email" ng-maxlength="100" required>
+	            </div>
+	        </div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+	            <div ng-messages="form.email.$error" ng-show="form.email.$dirty && form.email.$invalid">
+	              <div class="help-block" ng-show="form.email.$error.required" data-translate="global.messages.validate.email.required">Your email is required.</div>
+	              <div class="help-block" ng-show="form.email.$error.email" data-translate="global.messages.validate.email.invalid">Your email is invalid.</div>
+	              <div class="help-block" ng-show="form.email.$error.maxlength" data-translate="global.messages.validate.email.maxlength">Your email cannot be longer than 100 characters.</div>
+	            </div>
+			</div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+			    <div class="col-md-3">
+	            	<label class="control-label" for="firstName" data-translate="global.form.name">Nombre</label>
+	            </div>
+	            <div class="col-md-7">
+	            	<input class="form-control" type="text" id="firstName" name="firstName" ng-model="vm.registerAccount.firstName" ng-maxlength="50" required>
+	            </div>
+			</div>
+			<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+		            <div ng-messages="form.firstName.$error" ng-show="form.firstName.$dirty && form.firstName.$invalid">
+		              <div class="help-block" ng-show="form.firstName.$error.required" data-translate="register.messages.validate.firstName.required">Su nombre es obligatorio.</div>
+		              <div class="help-block" ng-show="form.firstName.$error.maxlength" data-translate="register.messages.validate.firstName.maxlength">Your name cannot be longer than 50 characters.</div>
+		            </div>
+	        </div>
+        </div>
+		<div class="form-group" style="margin-bottom: 3px;">
+			<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+			    <div class="col-md-3">  
+            		<label class="control-label" for="lastName" data-translate="global.form.lastName">Apellido</label>
+            	</div>
+	            <div class="col-md-7">
+	            	<input class="form-control" type="text" id="lastName" name="lastName" ng-model="vm.registerAccount.lastName" ng-maxlength="50" required>
+	            </div>
+            </div>
+            <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+	            <div ng-messages="form.lastName.$error" ng-show="form.lastName.$dirty && form.lastName.$invalid">
+	              <div class="help-block" ng-show="form.lastName.$error.required" data-translate="register.messages.validate.lastName.required">Su apellido es obligatorio.</div>
+	              <div class="help-block" ng-show="form.lastName.$error.maxlength" data-translate="register.messages.validate.lastName.maxlength">Your lastname cannot be longer than 50 characters.</div>
+	            </div>
+            </div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+				<div class="col-md-3">  
+	            	<label class="control-label" for="password" data-translate="global.form.newpassword">New password</label>
+	            </div>
+	            <div class="col-md-7">
+	            	<input class="form-control" type="password" id="password" name="password" ng-model="vm.registerAccount.password" ng-minlength="4" ng-maxlength="50" required>
+	            </div>
+	        </div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+	            <div ng-messages="form.password.$error" ng-show="form.password.$dirty && form.password.$invalid">
+	              <div class="help-block" ng-show="form.password.$error.required" data-translate="global.messages.validate.newpassword.required">Your password is required.</div>
+	              <div class="help-block" ng-show="form.password.$error.minlength" data-translate="global.messages.validate.newpassword.minlength">Your password is required to be at least 4 characters.</div>
+	              <div class="help-block" ng-show="form.password.$error.maxlength" data-translate="global.messages.validate.newpassword.maxlength">Your password cannot be longer than 50 characters.</div>
+	            </div>
+	        </div>    
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 5px;padding-left: 15px;">
+	            <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
+	        </div>
+	    </div>
+		
+		<div class="form-group" style="margin-bottom: 3px;">  
+			<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+				<div class="col-md-3">
+	            	<label class="control-label" for="confirmPassword" data-translate="global.form.confirmpassword">New password confirmation</label>
+	            </div>
+	            <div class="col-md-7">
+	            	<input class="form-control" type="password" id="confirmPassword" name="confirmPassword" ng-model="vm.confirmPassword" ng-minlength="4" ng-maxlength="50" required>
+	            </div>
+	        </div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+	            <div ng-messages="form.confirmPassword.$error" ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
+	              <div class="help-block" ng-show="form.confirmPassword.$error.required" data-translate="global.messages.validate.confirmpassword.required">Your confirmation password is required.</div>
+	              <div class="help-block" ng-show="form.confirmPassword.$error.minlength" data-translate="global.messages.validate.confirmpassword.minlength">Your confirmation password is required to be at least 4 characters.</div>
+	              <div class="help-block" ng-show="form.confirmPassword.$error.maxlength" data-translate="global.messages.validate.confirmpassword.maxlength">Your confirmation password cannot be longer than 50 characters.</div>
+	            </div>
+	        </div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+        	<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+        		<p style="color: grey;font-size: small;"><i>Utilizar el código internacional, seguido del código de área y el número local: +54 9 11 2345-6789</i></p>
+        	</div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+				<div class="col-md-3">
+	        		<label class="control-label" for="cellPhone" data-translate="global.form.cellPhone">Phone number</label>
+	        	</div>
+		        <div class="col-md-7">
+		        	<input class="form-control" type="tel" id="cellPhone" name="cellPhone" placeholder="{{'global.form.cellPhone.placeholder' | translate}}" ng-model="vm.registerAccount.cellPhone" required>
+		        </div>
+	        </div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+		        <div ng-messages="form.cellPhone.$error" ng-show="form.cellPhone.$dirty && form.cellPhone.$invalid">
+		            <div class="help-block" ng-show="form.cellPhone.$error.required" data-translate="register.messages.validate.cellPhone.required">Your phone is required.</div>
+		            <div class="help-block" ng-show="form.cellPhone.$invalid" data-translate="register.messages.validate.cellPhone.invalid">Your phone is invalid.</div>
+		        </div>
+	        </div>
+        </div>
+        
+        <div class="form-group has-error" style="margin-bottom: 3px;">   
+            <md-checkbox  style="margin-bottom: 3px;" id="acceptedConditions" name="acceptedConditions" ng-model="vm.registerAccount.acceptedConditions" ng-checked="false" required>
+              <span data-translate="global.form.acceptedConditions">Terms and Condition Agreed</span>
+            </md-checkbox>
+          	<div ng-messages="form.acceptedConditions.$error">
+              <div class="help-block" ng-show="form.acceptedConditions.$error.required" data-translate="register.messages.validate.acceptedConditions.required">You must accept the terms of service before you can proceed.</div>
+            </div>
+        </div>
+       
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.firstStep.button">Register first step</button>
+      
+      </form>
+    </div>
+
+</div>

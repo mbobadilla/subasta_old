@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
+    <h4 class="modal-title">Visualizar Mensaje</h4>
+</div>
+  
+<div class="modal-body">
+	
+	<div layout="column">
+        
+        <div layout="row" >
+	        <div class="form-group" style="margin: 5px;" flex>
+	            <label class="control-label">Tipo</label>
+	            <input class="form-control" type="text" ng-model="vm.message.type" disabled>
+	        </div>
+	        <div class="form-group" style="margin: 5px;" flex>
+	            <label class="control-label">Estado</label>
+	            <input class="form-control" type="text" ng-model="vm.message.state" disabled>
+	        </div>
+	        <div class="form-group" style="margin: 5px;" flex>
+	            <label class="control-label">Porcentaje completado ({{vm.message.completeness}}%)</label>
+            	<md-progress-linear style="margin-top: 15px;" md-mode="determinate" value="{{vm.message.completeness}}"></md-progress-linear>
+	        </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Nombre de template</label>
+            <input class="form-control" type="text" ng-model="vm.message.messageTemplateDTO.name" disabled>
+        </div>
+        
+        <div class="form-group" ng-if="vm.message.subject">
+	        <label class="control-label">Asunto</label>
+	        <input class="form-control" type="text" ng-model="vm.message.subject" disabled>
+        </div>
+        
+        <div class="form-group" flex>
+	        <label class="control-label">Cuerpo</label>
+	        <textarea class="form-control" style="height: 30%;" type="text" ng-model="vm.message.body" disabled></textarea>
+        </div>
+        
+        <div>
+           	<table class="jh-table table table-striped" >
+	            <thead>
+	              <tr>
+	                <th><span>Usuario</span></th>
+	                <th><span>Contacto</span></th>
+	                <th><span>Estado</span></th>
+	                <th><span>Intentos</span></th>
+	              </tr>
+	            </thead>
+	            <tbody>
+	              <tr ng-repeat="destinatary in vm.message.destinataries.slice(((vm.page-1) * vm.itemsPerPage), ((vm.page) * vm.itemsPerPage))">
+	                <td>{{destinatary.contactName}}</td>
+	                <td>{{destinatary.contact}}</td>
+	                <td>{{destinatary.state}}</td>
+	                <td>{{destinatary.attempts}}</td>
+	              </tr>
+	            </tbody>
+	        </table>
+	        <div class="text-center">
+		        <uib-pagination  total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" max-size="3" num-pages="vm.numPages" ></uib-pagination>
+		        <pre>Página: {{vm.page}} / {{vm.numPages}}</pre>
+		    </div>
+	    </div>
+	</div>
+</div>			
+
+<div class="modal-footer"></div>

@@ -1,0 +1,123 @@
+body {
+  width:100%;
+  box-sizing: border-box;
+}
+md-content.md-default-theme, md-content {
+  background-color: rgba(163, 160, 160, 0.45);
+}
+
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+
+md-card > h2 {
+  padding-left : 15px;
+  
+}
+
+.note {
+  width: 100%;
+  box-sizing:border-box;
+  
+}
+
+p.good {
+  line-height: 30px;
+  padding-left: 10px;
+  margin: 10px;
+    box-sizing:border-box;  
+    background-color: rgba(0, 128, 0, 0.31);  
+}
+
+p.warn {
+
+  line-height: 30px;
+  padding-left: 10px;
+  margin: 10px;
+    box-sizing:border-box;  
+    background-color: rgba(204, 2, 5, 0.31);
+}
+
+#subscribe-text {
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #555;
+}
+
+#subscribe input {
+    height: 45px;
+    color: #000;
+    padding: 8px;
+    margin: 20px 5px;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #fff;
+}
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    width: 100%;
+    position: relative; 
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*  Modal subscription */
+.modal-subscription {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-content-subscription {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgb(224, 228, 230);
+}
+
+.close-subscription {
+    color: #000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-subscription:hover,
+.close-subscription:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header-subscription {
+    padding: 2px 16px;
+    color: white;
+}
+
+#boxsombra {
+    background-color: white;
+    display: block;
+    margin: 50px auto 0;
+    color: #FFF;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+#boxsombra {
+    -webkit-box-shadow: 3px 4px 6px 0px rgba(56,110,99,0.57);
+    box-shadow: 3px 4px 6px 0px rgba(56,110,99,0.57);
+}
+
+
+.ui-carousel {
+  max-width: 942px;
+}

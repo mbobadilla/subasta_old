@@ -1,0 +1,9 @@
+{
+    "activate": {
+        "title": "Validación",
+        "messages": {
+            "success": "<strong>Su mail ha sido validado.</strong>",
+            "error": "<strong>Su mail no pudo ser validado.</strong> Por favor, utilice el formulario de inscripción para registrarse nuevamente o pongase en contacto con el administrador <strong>ofertasonline@solaguayre.com.ar</strong>"
+        }
+    }
+}

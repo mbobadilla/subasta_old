@@ -1,0 +1,167 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
+    <h4 class="modal-title"  data-translate="messageManagement.home.createLabel">Create a new Message Template</h4>
+</div>
+  
+<div class="modal-body">
+  
+  <section>
+	<table style="font-style: italic;">
+	  <tr>
+		  <td style="padding-right: 25px">Nombre del usuario = ##name##</td>
+		  <td style="padding-right: 25px">Apellido del usuario = ##lastName##</td>
+		  <td style="padding-right: 25px">Login del usuario = ##login##</td>
+	  </tr>
+	</table> 
+  </section>
+  
+  <md-tabs md-dynamic-height md-border-bottom>
+    <!-- MAIL TEMPLATE -->  
+    <md-tab label="Mail">
+	  <md-tab-body >
+		<div class="row">
+			<div class="col-md-4">
+				<button class="btn btn-primary" ng-click="vm.mailTemplate = vm.newTemplate('MAIL');">
+					<span class="glyphicon glyphicon-flash"></span><span>Nuevo template mail</span>
+				</button>
+			</div>
+		</div>
+
+		<div layout-gt-sm="row" style="height: 600px;">
+           	<div flex-gt-sm="50" >
+	           	<table class="jh-table table table-striped" >
+		            <thead>
+		              <tr>
+		                <th><span>ID</span></th>
+		                <th><span>Nombre</span></th>
+		                <th><span>Fecha de creación</span></th>
+		              </tr>
+		            </thead>
+		            <tbody>
+		              <tr ng-repeat="template in vm.mailTemplates.slice(((vm.mailPage-1) * vm.mailItemsPerPage), ((vm.mailPage)*vm.mailItemsPerPage))" ng-click="vm.copy(template, vm.mailTemplate);">
+		                <td>{{template.id}}</td>
+		                <td>{{template.name}}</td>
+		                <td style="white-space: nowrap;">{{template.date | date:'dd/MM/yy HH:mm'}}</td>
+		              </tr>
+		            </tbody>
+		        </table>
+		        <div class="text-center">
+			        <uib-pagination  total-items="vm.mailTotalItems" items-per-page="vm.mailItemsPerPage" ng-model="vm.mailPage" max-size="3" num-pages="vm.mailNumPages" ></uib-pagination>
+			        <pre>Página: {{vm.mailPage}} / {{vm.mailNumPages}}</pre>
+			    </div>
+		    </div>
+	  
+	    	<md-divider></md-divider>
+	  
+	  		<form name="mailForm" role="form" novalidate ng-submit="vm.saveOrUpdate(vm.mailTemplate)" show-validation flex-gt-sm="50" >
+	            <div style="padding-left: 10px; height: 100%;" layout="column">
+			        <div class="form-group" flex="10">
+			            <label class="control-label" for="name">Nombre</label>
+			            <input class="form-control" type="text" id="name" name="name" ng-model="vm.mailTemplate.name" ng-maxlength="255" required>
+			            <div ng-messages="mailForm.name.$error" ng-show="mailForm.name.$dirty && mailForm.name.$invalid">
+			              <div class="help-block" ng-show="mailForm.name.$error.required">El nombre es requerido.</div>
+			              <div class="help-block" ng-show="mailForm.name.$error.maxlength">El nombre no puede tener más de 255 caracteres.</div>
+			            </div>
+			        </div>
+			        
+			        <div class="form-group" flex="10">
+				        <label class="control-label" for="subject">Asunto</label>
+				        <input class="form-control" type="text" id="subject" name="subject" ng-model="vm.mailTemplate.subject" ng-maxlength="255" required>
+				        <div ng-messages="mailForm.subject.$error" ng-show="mailForm.subject.$dirty && mailForm.subject.$invalid">
+				            <div class="help-block" ng-show="mailForm.subject.$error.required">El asunto es requerido.</div>
+				            <div class="help-block" ng-show="mailForm.subject.$error.maxlength">El asunto no puede tener más de 255 caracteres.</div>
+				        </div>
+			        </div>
+			        
+			        <div class="form-group" flex="50">
+				        <label class="control-label" for="body">Cuerpo</label>
+				        <textarea class="form-control" style="height: 80%;" type="text" id="body" name="body" ng-model="vm.mailTemplate.body" required></textarea>
+				        <div ng-messages="mailForm.body.$error" ng-show="mailForm.body.$dirty && mailForm.body.$invalid">
+				            <div class="help-block" ng-show="mailForm.body.$error.required">El cuerpo es requerido.</div>
+				        </div>
+			        </div>
+			        
+			        <div class="form-group" flex="10">
+				        <label class="control-label" for="html">Es html?</label>
+				        <md-checkbox id="html" name="html" ng-model="vm.mailTemplate.html" ng-checked="false">
+			            </md-checkbox>
+			        </div>
+			        
+			        <div layout="row">
+				        <button type="submit" ng-disabled="mailForm.$invalid || vm.isSaving" class="btn btn-primary">Guardar</button>
+			        </div>
+				</div>
+		    </form>
+		</div>
+	  </md-tab-body>
+	</md-tab>
+	
+	<!-- WHATSAPP TEMPLATE -->  
+	
+	<md-tab label="Whatsapp">
+	  <md-tab-body >
+		<div class="row">
+			<div class="col-md-4">
+				<button class="btn btn-primary" ng-click="vm.phoneTemplate = vm.newTemplate('PHONE');">
+					<span class="glyphicon glyphicon-flash"></span><span>Nuevo template whatsapp</span>
+				</button>
+			</div>
+		</div>
+
+		<div layout-gt-sm="row" style="height: 600px;">
+           	<div flex-gt-sm="50" >
+	           	<table class="jh-table table table-striped" >
+		            <thead>
+		              <tr>
+		                <th><span>ID</span></th>
+		                <th><span>Nombre</span></th>
+		                <th><span>Fecha de creación</span></th>
+		              </tr>
+		            </thead>
+		            <tbody>
+		              <tr ng-repeat="template in vm.phoneTemplates.slice(((vm.phonePage-1) * vm.phoneItemsPerPage), ((vm.phonePage)*vm.phoneItemsPerPage))" ng-click="vm.copy(template, vm.phoneTemplate);">
+		                <td>{{template.id}}</td>
+		                <td>{{template.name}}</td>
+		                <td style="white-space: nowrap;">{{template.date | date:'dd/MM/yy HH:mm'}}</td>
+		              </tr>
+		            </tbody>
+		        </table>
+		        <div class="text-center">
+			        <uib-pagination  total-items="vm.phoneTotalItems" items-per-page="vm.phoneItemsPerPage" ng-model="vm.phonePage" max-size="3" num-pages="vm.phoneNumPages" ></uib-pagination>
+			        <pre>Página: {{vm.phonePage}} / {{vm.phoneNumPages}}</pre>
+			    </div>
+		    </div>
+	  
+	    	<md-divider></md-divider>
+	  
+	  		<form name="phoneForm" role="form" novalidate ng-submit="vm.saveOrUpdate(vm.phoneTemplate)" show-validation flex-gt-sm="50" >
+	            <div style="padding-left: 10px; height: 100%;" layout="column">
+			        <div class="form-group" flex="25">
+			            <label class="control-label" for="name">Nombre</label>
+			            <input class="form-control" type="text" id="name" name="name" ng-model="vm.phoneTemplate.name" ng-maxlength="255" required>
+			            <div ng-messages="phoneForm.name.$error" ng-show="phoneForm.name.$dirty && phoneForm.name.$invalid">
+			              <div class="help-block" ng-show="phoneForm.name.$error.required">El nombre es requerido.</div>
+			              <div class="help-block" ng-show="phoneForm.name.$error.maxlength">El nombre no puede tener más de 255 caracteres.</div>
+			            </div>
+			        </div>
+			        
+			        <div class="form-group" flex="60">
+				        <label class="control-label" for="body">Cuerpo</label>
+				        <textarea class="form-control" style="height: 80%;" type="text" id="body" name="body" ng-model="vm.phoneTemplate.body" required></textarea>
+				        <div ng-messages="phoneForm.body.$error" ng-show="phoneForm.body.$dirty && phoneForm.body.$invalid">
+				            <div class="help-block" ng-show="phoneForm.body.$error.required">El cuerpo es requerido.</div>
+				        </div>
+			        </div>
+			        
+			        <div layout="row">
+				        <button type="submit" ng-disabled="phoneForm.$invalid || vm.isSaving" class="btn btn-primary">Guardar</button>
+			        </div>
+				</div>
+		    </form>
+		</div>
+	  </md-tab-body>
+    </md-tab>
+  </md-tabs>
+</div>
+
+<div class="modal-footer"></div>

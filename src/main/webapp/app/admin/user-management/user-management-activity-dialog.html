@@ -1,0 +1,60 @@
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserLabel">
+          <strong> {{vm.user.firstName}} {{vm.user.lastName}} de {{vm.countryName}}</strong> 
+            
+        </h4>
+    </div>
+    <div class="modal-body">
+	    <fieldset class="scheduler-border">
+	      <legend class="scheduler-border">Tipo de Actividad</legend>
+	      <div layout="row" layout-wrap flex>
+            <div class="col-md-2" ng-repeat="item in vm.items">
+              <md-checkbox ng-checked="vm.exists(item.type, vm.selected)" ng-click="vm.toggle(item.type, vm.selected)">
+                <span>{{ item.detail }}</span>
+              </md-checkbox>
+            </div>
+	        
+	      </div>
+	      <div layout="row" layout-wrap flex>
+	      	<button class="btn btn-primary" style="margin-left: 3px;" ng-click="vm.search()">
+              <span>Buscar</span>
+            </button>
+	      </div>
+	    </fieldset>
+	    
+	    
+	    <div class="table-responsive">
+	        <table class="jh-table table table-striped">
+	            <thead>
+	            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+	                <th><span>Fecha</span></th>
+	                <th><span>Tipo</span></th>
+	                <th><span>Evento</span></th>
+	                <th><span>Producto</span></th>
+	                <th ng-if="vm.user.firstName != 'Anonymous'"><span>Monto</span></th>
+	                <th ng-if="vm.user.firstName != 'Anonymous'"><span>Mensaje</span></th>
+	                <th ng-if="vm.user.firstName == 'Anonymous'"><span>IP</span></th>
+	            </tr>
+	            </thead>
+	            <tbody>
+	            <tr ng-repeat="activity in vm.activities track by activity.id">
+	                <td>{{activity.date | date:'dd/MM/yy HH:mm'}}</td>
+	                <td>{{activity.type}}</td>
+	                <td>{{activity.eventName}}</td>
+	                <td>{{activity.productName}}</td>
+	                <td ng-if="vm.user.firstName != 'Anonymous'">{{activity.price}}</td>
+	                <td ng-if="vm.user.firstName != 'Anonymous'">{{activity.messageName}}</td>
+	                <td ng-if="vm.user.firstName == 'Anonymous'">{{activity.extra}}</td>
+	            </tr>
+	            </tbody>
+	        </table>
+	    </div>
+	    <div class="text-center">
+	        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+	        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+	    </div>
+	    
+    </div>

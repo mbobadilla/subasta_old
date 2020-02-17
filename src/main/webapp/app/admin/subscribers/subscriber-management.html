@@ -1,0 +1,34 @@
+<div>
+    <h2 data-translate="subscriberManagement.home.title">Subscribers</h2>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th jh-sort-by="id"><span data-translate="global.field.id">ID</span><span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="name"><span data-translate="subscriberManagement.firstName">FirstName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="email"><span data-translate="subscriberManagement.email">Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="cellPhone"> <span data-translate="subscriberManagement.cellPhone">cellPhone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="createdDate"><span data-translate="subscriberManagement.createdDate">Created Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th><span data-translate="subscriberManagement.message">Message</span> <span class="glyphicon glyphicon-sort"></span></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in vm.users track by user.id">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.cellPhone}}</td>
+                <td style="white-space: nowrap;">{{user.createdDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td style="word-break: break-all;">
+                    {{user.message}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

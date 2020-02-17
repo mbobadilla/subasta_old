@@ -1,0 +1,283 @@
+<!doctype html>
+<html class="no-js" lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Venta Online Solaguayre</title>
+    <meta name="description" content="">
+    <meta name="google" value="notranslate">
+    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Venta Online Solaguayre - http://ventaonline.solaguayre.com.ar/">
+	<meta name="twitter:title" content="Venta Online Solaguayre - http://ventaonline.solaguayre.com.ar/">
+	<meta property="og:description" content="Haras Solaguayre presenta productos para su compra por Internet, venta directa sin comisiones ni gastos extra, que dará oportunidad a todos los interesados a participar, sin importar la distancia. ">
+	<meta name="twitter:description" content="Haras Solaguayre presenta productos para su compra por Internet, venta directa sin comisiones ni gastos extra, que dará oportunidad a todos los interesados a participar, sin importar la distancia. ">
+	
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css content/css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="bower_components/angular-ui-carousel/dist/ui-carousel.min.css">
+    <link rel="stylesheet" href="bower_components/angular-moment-picker/dist/angular-moment-picker.min.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+    <!-- build:css content/css/main.css -->
+    <link rel="stylesheet" href="content/css/main.css?rev=1.6">
+    <!-- endbuild -->
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.webapp" />
+    
+    <!--No sacar este js cordova.js . Necesario para la mobile-->
+    <script src="cordova.js"></script>
+    
+</head>
+<body ng-app="subastadosApp" ng-strict-di style="background-color: #fff;">
+    <!--[if lt IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+	<!--     <page-ribbon></page-ribbon> -->
+    <div ui-view="navbar" ng-cloak></div>
+    <div>
+        <div class="well" ui-view="content" style="padding-top:0px;margin-top:0px; margin-bottom: 0px;background-color: #fff;border: 0; box-shadow: none;max-width: 99%;">
+            <!-- Angular views -->
+            
+        </div>
+
+        <div class="footer" style="display: none;" ng-cloak>
+<!--             <p data-translate="footer">This is your footer</p> -->
+            <div>
+  				<p class="textoPie" style="margin: 0px;text-align: center;">Copyright 2018 Solaguayre - Todos los derechos reservados&nbsp;&nbsp;&nbsp;</b></p>
+			</div>
+        </div>
+    </div>
+    <noscript>
+        <h1>You must enable javascript to view this page.</h1>
+    </noscript>
+    <!-- uncomment this for adding service worker
+        <script>
+            if ('serviceWorker' in navigator) {
+                 navigator.serviceWorker
+                    .register('./sw.js')
+                    .then(function() { console.log('Service Worker Registered'); });
+            }
+        </script>
+    -->
+    <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>-->
+
+
+
+    <!-- build:js app/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/messageformat/messageformat.js"></script>
+    <script src="bower_components/humanize-duration/humanize-duration.js"></script>
+    <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <script src="bower_components/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="bower_components/stomp-websocket/lib/stomp.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+    <script src="bower_components/angular-dynamic-locale/dist/tmhDynamicLocale.min.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="bower_components/angular-translate-interpolation-messageformat/angular-translate-interpolation-messageformat.min.js"></script>
+    <script src="bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-timer/dist/angular-timer.min.js"></script>
+    <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
+    <script src="bower_components/angular-ui-carousel/dist/ui-carousel.js"></script>
+    <script src="bower_components/teljs/dist/scripts/tel.js"></script>
+    <script src="bower_components/teljs/data/metadatalite.js"></script>
+    <script src="bower_components/ng-country-select/dist/ng-country-select.min.js"></script>
+    <script src="bower_components/checklist-model/checklist-model.js"></script>
+    <script src="bower_components/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+
+    <!-- build:js app/app.js  -->
+    <!-- inject:js -->
+    <script src="app/app.module.js?release=4.1"></script>
+    <script src="app/services/global.service.js?release=4.1"></script>
+    <script src="app/services/user/user.service.js?release=4.1"></script>
+    <script src="app/services/user/user.filter-service.js?release=4.1"></script>
+    <script src="app/services/profiles/profile.service.js?release=4.1"></script>
+    <script src="app/services/profiles/page-ribbon.directive.js?release=4.1"></script>
+    <script src="app/services/auth/sessions.service.js?release=4.1"></script>
+    <script src="app/services/auth/register-second-step.service.js?release=4.1"></script>
+    <script src="app/services/auth/register-first-step.service.js?release=4.1"></script>
+    <script src="app/services/auth/principal.service.js?release=4.1"></script>
+    <script src="app/services/auth/password-reset-init.service.js?release=4.1"></script>
+    <script src="app/services/auth/password-reset-finish.service.js?release=4.1"></script>
+    <script src="app/services/auth/password.service.js?release=4.1"></script>
+    <script src="app/services/auth/has-authority.directive.js?release=4.1"></script>
+    <script src="app/services/auth/has-any-authority.directive.js?release=4.1"></script>
+    <script src="app/services/auth/auth.session.service.js?release=4.1"></script>
+    <script src="app/services/auth/auth.service.js?release=4.1"></script>
+    <script src="app/services/auth/activate.service.js?release=4.1"></script>
+    <script src="app/services/auth/account.service.js?release=4.1"></script>
+    <script src="app/participate/participate.state.js?release=4.1"></script>
+    <script src="app/participate/participate.controller.js?release=4.1"></script>
+    <script src="app/mobilecontrolversion.service.js?release=4.1"></script>
+    <script src="app/layouts/navbar/navbar.controller.js?release=4.1"></script>
+    <script src="app/layouts/navbar/active-menu.directive.js?release=4.1"></script>
+    <script src="app/layouts/error/error.state.js?release=4.1"></script>
+    <script src="app/initPushNotifications.js?release=4.1"></script>
+    <script src="app/home/home.state.js?release=4.1"></script>
+    <script src="app/home/home.service.js?release=4.1"></script>
+    <script src="app/home/home.controller.js?release=4.1"></script>
+    <script src="app/eventos-anteriores/eventos-anteriores.state.js?release=4.1"></script>
+    <script src="app/eventos-anteriores/eventos-anteriores.service.js?release=4.1"></script>
+    <script src="app/eventos-anteriores/eventos-anteriores.controller.js?release=4.1"></script>
+    <script src="app/eventos-anteriores/evento-anterior.service.js?release=4.1"></script>
+    <script src="app/eventos-anteriores/evento-anterior.controller.js?release=4.1"></script>
+    <script src="app/evento/youtube-dialog.controller.js?release=4.1"></script>
+    <script src="app/evento/product-detail.controller.js?release=4.1"></script>
+    <script src="app/evento/product-bid-dialog.controller.js?release=4.1"></script>
+    <script src="app/evento/offers.service.js?release=4.1"></script>
+    <script src="app/evento/lastest-offers.controller.js?release=4.1"></script>
+    <script src="app/evento/evento.state.js?release=4.1"></script>
+    <script src="app/evento/evento.service.js?release=4.1"></script>
+    <script src="app/evento/evento.controller.js?release=4.1"></script>
+    <script src="app/evento/event-tracker.service.js?release=4.1"></script>
+    <script src="app/evento/reload-event.service.js?release=4.1"></script>
+    <script src="app/evento/finish-lote.service.js?release=4.1"></script>
+    <script src="app/entities/entity.state.js?release=4.1"></script>
+    <script src="app/detalle/detalle.controller.js?release=4.1"></script>
+    <script src="app/components/util/truncate-words.filter.js?release=4.1"></script>
+    <script src="app/components/util/truncate-characters.filter.js?release=4.1"></script>
+    <script src="app/components/util/sort-by.directive.js?release=4.1"></script>
+    <script src="app/components/util/sort.directive.js?release=4.1"></script>
+    <script src="app/components/util/parse-links.service.js?release=4.1"></script>
+    <script src="app/components/util/pagination-util.service.js?release=4.1"></script>
+    <script src="app/components/util/jhi-item-count.directive.js?release=4.1"></script>
+    <script src="app/components/util/error.constants.js?release=4.1"></script>
+    <script src="app/components/util/date-util.service.js?release=4.1"></script>
+    <script src="app/components/util/data-util.service.js?release=4.1"></script>
+    <script src="app/components/util/capitalize.filter.js?release=4.1"></script>
+    <script src="app/components/util/base64.service.js?release=4.1"></script>
+    <script src="app/components/login/login.service.js?release=4.1"></script>
+    <script src="app/components/login/login.controller.js?release=4.1"></script>
+    <script src="app/components/language/language.service.js?release=4.1"></script>
+    <script src="app/components/language/language.filter.js?release=4.1"></script>
+    <script src="app/components/language/language.controller.js?release=4.1"></script>
+    <script src="app/components/language/language.constants.js?release=4.1"></script>
+    <script src="app/components/form/show-validation.directive.js?release=4.1"></script>
+    <script src="app/components/form/pagination.constants.js?release=4.1"></script>
+    <script src="app/components/form/minbytes.directive.js?release=4.1"></script>
+    <script src="app/components/form/maxbytes.directive.js?release=4.1"></script>
+    <script src="app/components/alert/alert-error.directive.js?release=4.1"></script>
+    <script src="app/components/alert/alert.service.js?release=4.1"></script>
+    <script src="app/components/alert/alert.directive.js?release=4.1"></script>
+    <script src="app/blocks/interceptor/notification.interceptor.js?release=4.1"></script>
+    <script src="app/blocks/interceptor/errorhandler.interceptor.js?release=4.1"></script>
+    <script src="app/blocks/interceptor/auth-expired.interceptor.js?release=4.1"></script>
+    <script src="app/blocks/handlers/translation.handler.js?release=4.1"></script>
+    <script src="app/blocks/handlers/state.handler.js?release=4.1"></script>
+    <script src="app/blocks/config/uib-pagination.config.js?release=4.1"></script>
+    <script src="app/blocks/config/uib-pager.config.js?release=4.1"></script>
+    <script src="app/blocks/config/translation-storage.provider.js?release=4.1"></script>
+    <script src="app/blocks/config/translation.config.js?release=4.1"></script>
+    <script src="app/blocks/config/localstorage.config.js?release=4.1"></script>
+    <script src="app/blocks/config/http.config.js?release=4.1"></script>
+    <script src="app/blocks/config/compile.config.js?release=4.1"></script>
+    <script src="app/blocks/config/alert.config.js?release=4.1"></script>
+    <script src="app/app.state.js?release=4.1"></script>
+    <script src="app/app.constants.js?release=4.1"></script>
+    <script src="app/admin/user-management/user-management-new-notification.controller.js?release=4.1"></script>
+    <script src="app/admin/user-management/user-management-dialog.controller.js?release=4.1"></script>
+    <script src="app/admin/user-management/user-management-detail.controller.js?release=4.1"></script>
+    <script src="app/admin/user-management/user-management-delete-dialog.controller.js?release=4.1"></script>
+    <script src="app/admin/user-management/user-management-activity-dialog.controller.js?release=4.1"></script>
+    <script src="app/admin/user-management/user-management.state.js?release=4.1"></script>
+    <script src="app/admin/user-management/user-management.controller.js?release=4.1"></script>
+    <script src="app/admin/user-management/user-activity.service.js?release=4.1"></script>
+    <script src="app/admin/tracker/tracker.state.js?release=4.1"></script>
+    <script src="app/admin/tracker/tracker.service.js?release=4.1"></script>
+    <script src="app/admin/tracker/tracker.controller.js?release=4.1"></script>
+    <script src="app/admin/subscribers/subscriber-management.state.js?release=4.1"></script>
+    <script src="app/admin/subscribers/subscriber-management.controller.js?release=4.1"></script>
+    <script src="app/admin/subscribers/subscriber.service.js?release=4.1"></script>
+    <script src="app/admin/metrics/metrics.state.js?release=4.1"></script>
+    <script src="app/admin/metrics/metrics.service.js?release=4.1"></script>
+    <script src="app/admin/metrics/metrics.modal.controller.js?release=4.1"></script>
+    <script src="app/admin/metrics/metrics.controller.js?release=4.1"></script>
+    <script src="app/admin/messages/message-template-dialog.controller.js?release=4.1"></script>
+    <script src="app/admin/messages/message-template.service.js?release=4.1"></script>
+    <script src="app/admin/messages/message-management-dialog.controller.js?release=4.1"></script>
+    <script src="app/admin/messages/message-management.state.js?release=4.1"></script>
+    <script src="app/admin/messages/message-management.controller.js?release=4.1"></script>
+    <script src="app/admin/messages/message.service.js?release=4.1"></script>
+    <script src="app/admin/logs/logs.state.js?release=4.1"></script>
+    <script src="app/admin/logs/logs.service.js?release=4.1"></script>
+    <script src="app/admin/logs/logs.controller.js?release=4.1"></script>
+    <script src="app/admin/health/health.state.js?release=4.1"></script>
+    <script src="app/admin/health/health.service.js?release=4.1"></script>
+    <script src="app/admin/health/health.modal.controller.js?release=4.1"></script>
+    <script src="app/admin/health/health.controller.js?release=4.1"></script>
+    <script src="app/admin/general-configuration/general.configuration.service.js?release=4.1"></script>
+    <script src="app/admin/events/event-management-dialog.controller.js?release=4.1"></script>
+    <script src="app/admin/events/event-management-delete-dialog.controller.js?release=4.1"></script>
+    <script src="app/admin/events/event-management.state.js?release=4.1"></script>
+    <script src="app/admin/events/event-management.service.js?release=4.1"></script>
+    <script src="app/admin/events/event-management.controller.js?release=4.1"></script>
+    <script src="app/admin/docs/docs.state.js?release=4.1"></script>
+    <script src="app/admin/configuration/configuration.state.js?release=4.1"></script>
+    <script src="app/admin/configuration/configuration.service.js?release=4.1"></script>
+    <script src="app/admin/configuration/configuration.controller.js?release=4.1"></script>
+    <script src="app/admin/audits/audits.state.js?release=4.1"></script>
+    <script src="app/admin/audits/audits.service.js?release=4.1"></script>
+    <script src="app/admin/audits/audits.controller.js?release=4.1"></script>
+    <script src="app/admin/admin.state.js?release=4.1"></script>
+    <script src="app/account/social/social-register.controller.js?release=4.1"></script>
+    <script src="app/account/social/social.state.js?release=4.1"></script>
+    <script src="app/account/social/social.service.js?release=4.1"></script>
+    <script src="app/account/social/directive/social.directive.js?release=4.1"></script>
+    <script src="app/account/settings/settings.state.js?release=4.1"></script>
+    <script src="app/account/settings/settings.controller.js?release=4.1"></script>
+    <script src="app/account/sessions/sessions.state.js?release=4.1"></script>
+    <script src="app/account/sessions/sessions.controller.js?release=4.1"></script>
+    <script src="app/account/reset/request/reset.request.state.js?release=4.1"></script>
+    <script src="app/account/reset/request/reset.request.controller.js?release=4.1"></script>
+    <script src="app/account/reset/finish/reset.finish.state.js?release=4.1"></script>
+    <script src="app/account/reset/finish/reset.finish.controller.js?release=4.1"></script>
+    <script src="app/account/register/register.state.js?release=4.1"></script>
+    <script src="app/account/register/register.controller.js?release=4.1"></script>
+    <script src="app/account/register/phone-validation-dialog.controller.js?release=4.1"></script>
+    <script src="app/account/password/password-strength-bar.directive.js?release=4.1"></script>
+    <script src="app/account/password/password.state.js?release=4.1"></script>
+    <script src="app/account/password/password.controller.js?release=4.1"></script>
+    <script src="app/account/activate/activate.state.js?release=4.1"></script>
+    <script src="app/account/activate/activate.controller.js?release=4.1"></script>
+    <script src="app/account/account.state.js?release=4.1"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201801291000_destacado_caballo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201803010141_subscriber.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201803010145_user_updates.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201803060145_subscribers_updates.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201803070145_subscribers_updates.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201803130100_user_updates_2.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201803130130_user_updates_3.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201803192030_subscribers_updates.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201803260030_user_updates_4.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804021000_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804072000_model_updates.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804072100_model_updates.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804081700_user_updates3.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804090200_model_create_general_configuration.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804092100_model_update_product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804121700_user_updates5.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804140050_create_device_registration.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804170020_update_event.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804190210_update_lote.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804220230_update_user.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804282100_create_mobile_version.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201804282250_update_event.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201805080008_user_updates.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201808012200_message_model.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201808260000_activity_event.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201808270000_event_participant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201808300020_update_message.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201808300021_update_message_template.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201809100021_update_activity_event.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201810010021_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201810281800_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201810281900_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201810292000_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201902010000_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201902120000_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201902130000_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201902260000_model_update.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/201906300000_model_update.xml" relativeToChangelogFile="false"/>
+    
+    
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

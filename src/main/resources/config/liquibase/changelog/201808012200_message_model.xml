@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <changeSet id="00000000000023" author="eze">
+    
+        <createTable tableName="message">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            
+            <column name="type" type="varchar(255)"/>
+            <column name="state" type="varchar(50)"/>
+            
+            <column name="template_id" type="bigint"/>
+            <column name="subject" type="varchar(255)"/>
+            <column name="body" type="text"/>
+            
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+        
+        <createTable tableName="message_template">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            
+            <column name="type" type="varchar(255)"/>
+			<column name="name" type="varchar(255)"/>
+            
+			<column name="subject" type="varchar(255)"/>
+            <column name="body" type="text"/>
+			
+			<column name="date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        
+        <createTable tableName="message_user">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            
+            <column name="user_id" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+			<column name="message_id" type="bigint">
+				<constraints nullable="false"/>
+			</column>
+            
+            <column name="state" type="varchar(50)"/>
+			<column name="attempts" type="integer"/>
+        </createTable>
+        
+		<addForeignKeyConstraint baseColumnNames="template_id"
+                                 baseTableName="message"
+                                 constraintName="fk_message_template_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="message_template"/>
+                                 
+		<addForeignKeyConstraint baseColumnNames="user_id"
+								 baseTableName="message_user"
+								 constraintName="fk_message_user_user_id"
+								 referencedColumnNames="id"
+								 referencedTableName="jhi_user"/>
+		<addForeignKeyConstraint baseColumnNames="message_id"
+								 baseTableName="message_user"
+								 constraintName="fk_message_user_message_id"
+								 referencedColumnNames="id"
+								 referencedTableName="message"/>
+        
+    </changeSet>
+</databaseChangeLog>

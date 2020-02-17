@@ -1,0 +1,107 @@
+
+<section id="main-content" class="listings" style="margin-right:0px; margin-left: 0px; margin: 0;padding: 0;">
+	<div class="wrapper" id="lista" style="margin: 0px;padding: 0px;margin-top: 10px;padding-top: 10px;">
+		<ul class="properties_list">
+   			<md-card style="box-shadow: none;">
+			        <md-card-header style="padding:0;">
+			          <md-card-header-text>
+			            <span style="font-weight: bold;" class="md-title">
+			            {{vm.evento.name}} 
+			            
+			            </span>
+			            <span style="font-weight: bold;" class="md-subhead">
+			            	{{vm.evento.initDate | date: 'dd/MM/yyyy'}} - {{vm.evento.endDate | date: 'dd/MM/yyyy'}} &nbsp;&nbsp;&nbsp;
+			            </span>
+			            <span style="font-weight: bold;" class="md-subhead">
+
+			            	<md-button ng-if="!vm.appType" ng-href="\eventos\{{vm.evento.name}}\catalogo.pdf" target="_blank" class="md-raised md-primary" style="margin-left:0px;">Cat&aacute;logo</md-button>
+							<md-button ng-if="!vm.appType" ng-href="\eventos\{{vm.evento.name}}\condiciones.pdf" target="_blank" class="md-raised md-primary" class="md-raised md-primary">Condiciones</md-button>
+									            
+			            	<md-button ng-if="vm.appType" ng-click="vm.downloadMobileFile(vm.evento.name, 'downloadCatalogoFile', 'catalogo.pdf')" target="_blank" class="md-raised md-primary" style="margin-left:0px;">Cat&aacute;logo</md-button>
+							<md-button ng-if="vm.appType" ng-click="vm.downloadMobileFile(vm.evento.name, 'downloadTermsFile', 'condiciones.pdf')" target="_blank" class="md-raised md-primary" class="md-raised md-primary">Condiciones</md-button>
+			            
+			            </span>
+			          </md-card-header-text>
+			        </md-card-header>
+      		</md-card>
+		
+			<li ng-repeat="lote in vm.evento.lotes" style="margin: 0px;height: 450px;">
+				<md-card class="productCard" style="background:rgb(224, 228, 230); max-width:330px;">
+         				<div style="max-width: 330px; max-height: 275px;">
+				    		<img src="{{vm.urlFotoCaballo}}{{lote.product.$foto_lista}}" alt="" ng-click="showDetail(lote.product.$idcaballo, lote.id)">
+				    	</div>
+				    <md-card-content class="cardProducto" style="padding:8px;padding-top:0px;">
+ 							<table class="table" style="margin-bottom: 0px;">
+ 								<tbody>
+ 									<tr>
+							        <td style="padding: 0px;vertical-align: middle;">
+				      					<h2 style="font-family:serif;color: #1a2732;font-size:1em;font-weight:400;color:#222;margin-top: 12px;margin-bottom: 5px; text-align: center;">
+				      						<b>Lote: {{lote.product.$orden}} - {{lote.product.$nombre}}</b>
+				      					</h2>
+				      				</td>
+				      				
+				      				<td style="padding: 0px;">
+				      					<md-card-actions style="margin-left:0;" layout="row" layout-align="start center">
+											<div style="margin-left:auto; margin-right:0;">
+									          <md-card-icon-actions ng-switch="!!lote.product.$youtube">
+										          <div class="video-link" style="margin-left:10px;" ng-switch-when="true"> 
+						 						  		<a ui-sref=".youtube({video:lote.product.$youtube})" class="launch-modal" data-modal-id="modal-video">
+						 								   <img src="content/images/youtube-icon.png">  
+						 								</a> 
+						  						  </div>
+						  						  <div style="margin-left:10px;"> 
+						 						  		<a ng-click="showDetail(lote.product.$idcaballo)" class="launch-modal" data-modal-id="modal-info" >
+						 								   <img src="content/images/info_icon.png">  
+						 								</a> 
+						  						  </div>
+									          </md-card-icon-actions>
+											</div>
+				        				 </md-card-actions>
+				      				</td>
+				      				
+				      			</tr>
+				      		</tbody>
+				      	</table>
+				     
+   					  <div style="width: 100%;border: 0;margin-top: 10px;" class="table-responsive">
+ 							<table class="table" style="margin-bottom: 10px;">
+ 								<tbody>
+ 									<tr ng-if="vm.viewAmountInOffer">
+								        <td style="border: 0;white-space: normal;padding: 0;">
+								      		<div ng-if="!lote.lastBid">
+								       			<p style="text-align: center;font-size: 14px; font-weight: bold;">
+					       							Vendido en: USD {{lote.initialPrice}}
+					     						</p>
+								        	</div>
+								        	<div ng-if="lote.lastBid">
+								        		<p style="text-align: center;font-size: 14px; font-weight: bold;">
+					       							Vendido en: USD {{lote.lastBid.price}}
+					     						</p>
+								        	</div>
+								        </td>
+						        	</tr>
+						        	<tr>
+								        <td style="border: 0;white-space: normal;padding: 0;">
+							       			<p style="text-align: center;font-size: 12px; font-weight: bold;">
+				       							{{vm.loteMessage[lote.id]}}
+				     						</p>
+								        </td>
+						        	</tr>
+ 								</tbody>
+						  </table>
+   					  </div>
+				      <p style="text-align: center;font-size: 12px;">
+				       	{{lote.product.$sexo}} - {{lote.product.$fecha_nacimiento}}
+				      </p>
+				      <p style="text-align: center;font-size: 12px; font-weight: bold; height:40px;">
+				       	{{lote.product.$comentario_breve}}
+				      </p>
+				    </md-card-content>
+				    
+				</md-card>
+ 
+			</li>
+		</ul>
+									  				
+	</div>
+</section>	<!--  end listing section  -->

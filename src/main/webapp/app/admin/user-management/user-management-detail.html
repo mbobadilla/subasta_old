@@ -1,0 +1,79 @@
+<div>
+    <h2>
+        <span data-translate="userManagement.detail.title">User</span> [<b>{{vm.user.login}}</b>]
+    </h2>
+    <dl class="dl-horizontal jh-entity-details">
+    	<div layout-gt-sm="row" layout-sm="column" layout-xs="column" class="row">    
+		    <div flex-gt-sm="25" flex-sm="25" flex-xs="100" flex-order-xs="1" style="margin: 8px;">
+		        <dt style="white-space:normal !important;text-align: left;text-align: left;"><span data-translate="userManagement.login">Login</span></dt>
+		        <dd>
+		            <span>{{vm.user.login}}</span>
+		            <span class="label label-danger" ng-show="!vm.user.activated"
+		                  data-translate="userManagement.deactivated">Deactivated</span>
+		            <span class="label label-success" ng-show="vm.user.activated"
+		                  data-translate="userManagement.activated">Activated</span>
+		        </dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.firstName">First Name</span></dt>
+		        <dd>{{vm.user.firstName}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.lastName">Last Name</span></dt>
+		        <dd>{{vm.user.lastName}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.email">Email</span></dt>
+		        <dd>{{vm.user.email}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.dni">Dni</span></dt>
+		        <dd>{{vm.user.dni}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.cellPhone">Cell Phone</span></dt>
+		        <dd>{{vm.user.cellPhone}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.address">Address</span></dt>
+		        <dd>{{vm.user.address}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.birthday">Birthday</span></dt>
+		        <dd>{{vm.user.birthday | date:'dd/MM/yyyy' }}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.acceptedConditions">Accepted Conditions</span></dt>
+		        <dd>{{vm.user.acceptedConditions == true ? 'Si' : 'No'}}</dd>
+		       	<dt style="white-space:normal !important;text-align: left;"><span data-translate="global.form.emailNotifications">Email Notificactions</span></dt>
+		        <dd>{{vm.user.emailNotifications == true ? 'Si' : 'No'}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="global.form.phoneNotifications">Phone Notifications</span></dt>
+		        <dd>{{vm.user.phoneNotifications == true ? 'Si' : 'No'}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.emailValid">Email Valid</span></dt>
+		        <dd>{{vm.user.emailValid == true ? 'Si' : 'No'}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.phoneValid">Phone Valid</span></dt>
+		        <dd>{{vm.user.phoneValid == true ? 'Si' : 'No'}}</dd>
+			</div>
+			<div flex-gt-sm="25" flex-sm="25" flex-xs="100" flex-order-xs="1" style="margin: 8px;">
+
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.langKey">Lang Key</span></dt>
+		        <dd>{{vm.user.langKey}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.createdBy">Created By</span></dt>
+		        <dd>{{vm.user.createdBy}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.createdDate">Created Date</span></dt>
+		        <dd>{{vm.user.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.lastModifiedBy">Last Modified By</span></dt>
+		        <dd>{{vm.user.lastModifiedBy}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.lastModifiedDate">Last Modified Date</span></dt>
+		        <dd>{{vm.user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.presentedBy">Presented By</span></dt>
+		        <dd>{{vm.user.presentedBy}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.postalCode">Postal code</span></dt>
+		        <dd>{{vm.user.postalCode}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.city">City</span></dt>
+		        <dd>{{vm.user.city}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.userCountry">Country</span></dt>
+		        <dd>{{vm.user.userCountry}}</dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.profiles">Profiles</span></dt>
+		        <dd>
+		            <ul class="list-unstyled">
+		                <li ng-repeat="authority in vm.user.authorities">
+		                    <span class="label label-info">{{authority}}</span>
+		                </li>
+		            </ul>
+		        </dd>
+		        <dt style="white-space:normal !important;text-align: left;"><span data-translate="userManagement.comments">Comments</span></dt>
+		        <dd>{{vm.user.comments}}</dd>
+			</div>
+		</div>
+    </dl>
+    <button type="submit"
+            ui-sref="user-management"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+</div>

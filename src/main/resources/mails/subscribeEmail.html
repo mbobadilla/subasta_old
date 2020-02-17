@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{email.subscribe.title}"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p th:text="#{email.subscribe.greeting(${subscriber.name})}">
+        </p>
+        <p th:text="#{email.subscribe.text1(${subscriber.email})}">
+        </p>
+        <p>
+            <span th:text="#{email.subscribe.text2}"></span>
+            <br/>
+            <em th:text="#{email.subscribe.signature}"></em>
+        </p>
+    </body>
+</html>

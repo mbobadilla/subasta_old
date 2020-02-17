@@ -1,0 +1,42 @@
+{
+    "userManagement": {
+        "home": {
+            "title": "Usuarios",
+            "createLabel": "Crear un nuevo usuario",
+            "createOrEditLabel": "Crear o editar un usuario"
+        },
+        "created": "Un nuevo usuario fue creado con el identificador {{ param }}",
+        "updated": "Un nuevo usuario fue actualizado con el identificador {{ param }}",
+        "deleted": "Un usuario fue eliminado con el identificador {{ param }}",
+        "delete": {
+            "question": "¿Seguro que quieres eliminar el usuario {{ login }}?"
+        },
+        "detail": {
+            "title": "Usuario"
+        },
+        "login": "Login",
+        "firstName": "Nombre",
+        "lastName": "Apellido",
+        "email": "Email",
+        "activated": "Activado",
+        "deactivated": "Desactivado",
+        "profiles": "Perfiles",
+        "langKey": "Idioma",
+        "createdBy": "Creado por",
+        "createdDate": "Fecha de creación",
+        "lastModifiedBy": "Modificado por",
+        "lastModifiedDate": "Fecha de modificación",
+        "dni": "Dni",
+        "cellPhone": "Teléfono celular",
+        "address": "Dirección",
+        "birthday": "Fecha de nacimiento",
+        "acceptedConditions": "Condiciones aceptadas",
+        "emailValid": "Email validado",
+        "phoneValid": "Teléfono validado",
+        "presentedBy": "Presentado Por",
+        "postalCode": "Código Postal",
+        "city": "Ciudad",
+        "userCountry": "País",
+        "comments": "Comentarios"
+    }
+}

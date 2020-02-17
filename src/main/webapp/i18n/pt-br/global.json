@@ -1,0 +1,204 @@
+{
+    "global": {
+        "title": "Venda Online Solaguayre",
+        "browsehappy": "VocÃª estÃ¡ usando um navegador <strong>desatualizado</strong>. Favor <a href=\"http://browsehappy.com/?locale=pt_BR\">atualizar o seu navegador</a> para ter uma experiÃªncia melhor.",
+        "event": {
+	        "receiveNotifications": "Receba notificaÃ§Ãµes",
+	        "closedBid": "LOTE FECHADO",
+	        "days": "DÃ­as",
+	        "hours": "Horas",
+	        "minutes": "Min.",
+	        "seconds": "Secs.",
+	        "offers": "Ofertas",
+	        "bid": "Oferta",
+	        "currentBid": "Oferta Atual (USD)",
+	        "newBid": "Nova Oferta (USD)",
+        	"minBid": "A oferta deve ser igual ou maior que {{ ofertaMinima }}",
+	        "messageBid1": "Você é o vencedor da oferta",
+	        "messageBid2": "Você está ganhando a oferta",
+	        "messageBid3": "{{ user }} do {{ country }} está ganhando a oferta",
+	        "messageBid4": "Vendido a {{ country }}",
+	        "vendidoEn": "Vendido en (USD)"
+	        
+	    },
+	    "home": {
+	        "receiveInformation": "RECEBA INFORMAÃ‡Ã•ES DE NOSSAS PRÃ“XIMAS OFERTAS",
+	        "participate": "Participe na nossa prÃ³xima venda online",
+	        "register": "Cadastre-se",
+	        "send": "Enviar",
+	        "registrarse": "Register in the online sales platform",
+	        "participar": "Participate"
+	    },
+        "menu": {
+            "home": "ComeÃ§ar",
+            "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+            "entities": {
+                "main": "Entidades",
+                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+            },
+            "account": {
+                "main": "Conta",
+                "settings": "ConfiguraÃ§Ã£o",
+                "password": "Senha",
+                "sessions": "SessÃµes",
+                "login": "Entrar",
+                "logout": "Sair",
+                "register": "Registrar"
+            },
+            "admin": {
+                "main": "AdministraÃ§Ã£o",
+                "userManagement": "Gerenciamento de usuÃ¡rio",
+                "subscriberManagement": "Gerenciamento de Assinante",
+                "tracker": "Rastreamento de usuÃ¡rio",
+                "metrics": "MÃ©tricas",
+                "health": "Estado do Sistema",
+                "configuration": "ConfiguraÃ§Ã£o",
+                "logs": "Logs",
+                "audits": "Auditorias",
+                "apidocs": "API",
+                "database": "Banco de dados",
+                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+            },
+            "language": "Idioma",
+            "ventaOnline": "Venda Online",
+            "ventasAnteriores": "Vendas Antes",
+            "conditions": "Condições",
+            "catalogo": "Catálogo"
+        },
+        "form": {
+            "username": "UsuÃ¡rio",
+            "username.placeholder": "Seu usuÃ¡rio",
+            "name": "Nome",
+            "name.placeholder": "Seu nome",
+            "lastName": "Nombre",
+            "lastName.placeholder": "Su nombre",
+            "newpassword": "Nova senha",
+            "newpassword.placeholder": "Nova senha",
+            "confirmpassword": "ConfirmaÃ§Ã£o senha",
+            "confirmpassword.placeholder": "Confirme a nova senha",
+            "email": "Email",
+            "email.placeholder": "Seu email",
+            "dni": "Dni",
+            "dni.placeholder": "Seu dni",
+            "birthday": "Data de nascimento",
+            "birthday.placeholder": "Sua data de nascimento",
+            "cellPhone": "Telefone celular",
+            "cellPhone.placeholder": "Seu celular",
+            "address": "EndereÃ§o",
+            "address.placeholder": "Sua direÃ§Ã£o",
+            "acceptedConditions": "Eu aceito os termos e condiÃ§Ãµes",
+            "emailNotifications": "Enviar notificaÃ§Ãµes por email",
+            "phoneNotifications": "Enviar notificaÃ§Ãµes do whatsapp",
+            "message.placeholder": "Sua mensagem...",
+            "presentedBy": "Apresentado por",
+            "presentedBy.placeholder": "Apresentado por",
+            "city": "Cidade",
+            "postalCode": "CÃ³digo Postal",
+            "userCountry": "Country",
+            "phoneValid": "Telefone VÃ¡lido",
+            "emailValid": "Email VÃ¡lido",
+            "offer": "Oferta",
+            "date": "Data",
+            "lastestOffers": "Ãšltimas ofertas",
+            "cellPhoneValidationKey": "Validation key",
+            "phoneValidationKey.placeholder": "Please enter your phone validation key"
+        },
+        "messages": {
+            "info": {
+                "authenticated": "Para <a class=\"alert-link\" href=\"\" ng-click=\"vm.login()\">entrar</a>",
+                "register": "NÃ£o possui uma conta ainda? <a class=\"alert-link\" href=\"\" ng-click=\"vm.register()\">Crie uma nova conta</a>"
+            },
+            "error": {
+                "dontmatch" : "A senha e sua confirmaÃ§Ã£o devem ser iguais!"
+            },
+            "success": "<strong>Â¡Sua consulta foi enviada corretamente!</strong>",
+            "validate": {
+                "newpassword": {
+                    "required": "A senha Ã© obrigatÃ³ria.",
+                    "minlength": "A senha deve ter pelo menos 5 caracteres",
+                    "maxlength": "A senha nÃ£o pode ter mais de 50 caracteres",
+                    "strength": "NÃ­vel de dificuldade da senha:"
+                },
+                "confirmpassword": {
+                    "required": "A confirmaÃ§Ã£o da senha Ã© obrigatÃ³ria.",
+                    "minlength": "A confirmaÃ§Ã£o da senha deve ter pelo menos 4 caracteres",
+                    "maxlength": "A confirmaÃ§Ã£o da senha nÃ£o pode ter mais de 50 caracteres"
+                },
+                "email": {
+                    "required": "O email Ã© obrigatÃ³rio.",
+                    "invalid": "Email invÃ¡lido.",
+                    "minlength": "O email deve ter pelo menos 5 caracteres",
+                    "maxlength": "O email nÃ£o pode ter mais de 100 caracteres"
+                },
+                "name": {
+                    "required": "Um email Ã© obrigatÃ³rio.",
+                    "maxlength": "Seu email nÃ£o pode ter mais de 50 caracteres"
+                },
+                "cellPhone": {
+                    "required": "Um celular Ã© necessÃ¡rio"
+                }
+            },
+            "newbid": {
+           		"question": "VocÃª estÃ¡ oferecendo USD {{ price }} por {{ nombre }}"
+        	}
+        },
+        "field": {
+            "id" : "CÃ³digo"
+        },
+        "ribbon": {
+            "dev":"Development"
+        },
+        "item-count": "Mostrando {{first}} - {{second}} de {{total}} resultados."
+    },
+    "entity": {
+        "action": {
+            "addblob": "Adicionar blob",
+            "addimage": "Adicionar imagem",
+            "back": "Voltar",
+            "cancel": "Cancelar",
+            "delete": "Excluir",
+            "edit": "Editar",
+            "open": "Open",
+            "save": "Salvar",
+            "view": "Visualizar",
+            "bid": "Ofertar",
+            "activity": "Actividade",
+            "anonymousactivity": "Actividad Anónima",
+            "block": "Bloquear",
+            "unBlock": "Desbloquear"
+        },
+        "detail": {
+            "field": "Campo",
+            "value": "Valor"
+        },
+        "delete": {
+            "title": "Confirme a exclusÃ£o"
+        },
+        "validation": {
+            "required": "O campo Ã© obrigatÃ³rio.",
+            "minlength": "Este campo deve ter ao menos {{min}} caracteres.",
+            "maxlength": "Este campo nÃ£o pode ter mais que {{max}} caracteres.",
+            "min": "Este campo deve ser maior que {{min}}.",
+            "max": "Este campo nÃ£o pode ser maior que {{max}}.",
+            "minbytes": "Este campo deve ter ao menos {{min}} bytes.",
+            "maxbytes": "Este campo nÃ£o pode ter mais que {{max}} bytes.",
+            "pattern": "Este campo deve estar dentro do seguinte padrÃ£o {{pattern}}.",
+            "number": "Este campo Ã© do tipo nÃºmero.",
+            "datetimelocal": "Este campo Ã© do tipo data/hora."
+        },
+        "bid": {
+            "title": "Confirmar nueva oferta"
+        }
+    },
+    "error": {
+        "internalServerError": "Internal server error",
+        "server.not.reachable": "Servidor indisponÃ­vel",
+        "url.not.found": "Not found",
+        "NotNull": "O Campo {{fieldName}} nÃ£o pode ser vazio!",
+        "Size": "O campo {{fieldName}} nÃ£o obedece os requisitos de tamanho mÃ­nimo ou mÃ¡ximo!",
+        "userexists": "UsuÃ¡rio jÃ¡ existente!",
+        "emailexists": "Este email jÃ¡ estÃ¡ cadastrado!",
+        "idexists": "Novo(a) {{entityName}} nÃ£o pode ter uma ID"
+    },
+    "footer": "Este Ã© o seu rodapÃ©"
+}

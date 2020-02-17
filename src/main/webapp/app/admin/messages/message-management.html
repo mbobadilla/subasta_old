@@ -1,0 +1,63 @@
+<div>
+    <h2 data-translate="messageManagement.home.title">Messages</h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+      <div class="col-md-4">
+          <button class="btn btn-primary" ui-sref="message-management.new-template">
+              <span class="glyphicon glyphicon-flash"></span> <span data-translate="messageManagement.home.template">Manage Message Template</span>
+          </button>
+      </div>
+    </div>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                <th><span data-translate="global.field.id">ID</span></th>
+                <th><span data-translate="messageManagement.type">Type</span></th>
+                <th><span data-translate="messageManagement.name">Name</span></th>
+                <th><span data-translate="messageManagement.state">State</span></th>
+                <th><span>Enviados</span></th>
+                <th><span>Fallidos</span></th>
+                <th><span data-translate="messageManagement.startDate">Start Date</span></th>
+                <th><span data-translate="messageManagement.endDate">End Date</span></th>
+                <th><span data-translate="messageManagement.createdBy">Created By</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="message in vm.messages">
+                <td>{{message.id}}</td>
+                <td>{{message.type}}</td>
+                <td>{{message.messageTemplateDTO.name}}</td>
+                <td>{{message.state}}</td>
+                <td>{{message.sended}}</td>
+                <td>{{message.failure}}</td>
+                <td style="white-space: nowrap;">{{message.createdDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td style="white-space: nowrap;">{{message.endDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td>{{message.createdBy}}</td>
+				
+				<td class="text-right" >
+                    <div ng-if="message.state == 'Finalizado con error'" class="btn-group flex-btn-group-container">
+                        <button type="submit" ng-click="vm.retry(message.id)" class="btn btn-info btn-sm">
+                            <span class="hidden-xs hidden-sm">Reintentar</span>
+                        </button>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="message-management.view({id: message.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

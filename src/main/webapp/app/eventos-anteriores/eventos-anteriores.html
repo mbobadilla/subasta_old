@@ -1,0 +1,29 @@
+
+<section id="main-content" class="listings" style="margin-right:0px; margin-left: 0px; margin: 0;padding: 0;">
+	<div class="wrapper" id="lista" style="margin: 0px;padding: 0px;margin-top: 20px;padding-top: 20px;">
+		<ul class="properties_list">
+			
+			<li ng-repeat="evento in vm.eventos" >
+			
+				<md-card style="background-color:rgb(224, 228, 230);min-width: 280px;max-width: 330px;">
+			        <md-card-header>
+			          <md-card-header-text>
+			            <span style="font-weight: bold;" class="md-title">{{evento.name}}</span>
+			            <span style="font-weight: bold;" class="md-subhead">
+			            	{{evento.initDate | date: 'dd/MM/yyyy'}} - {{evento.endDate | date: 'dd/MM/yyyy'}}
+			            </span>
+			          </md-card-header-text>
+			        </md-card-header>
+			        <div style="min-width: 280px;max-width: 330px;">
+			    		<img ng-src="{{vm.getPath(evento.id)}}" alt="" ui-sref="eventos-anteriores-detail({idEvento: evento.id})">
+				    </div>
+			        <md-card-actions layout="row" layout-align="end center">
+			          <md-button class="md-raised md-primary" ui-sref="eventos-anteriores-detail({idEvento: evento.id})">Ver</md-button>
+			        </md-card-actions>
+      			</md-card>
+ 
+			</li>
+		</ul>
+									  				
+	</div>
+</section>	<!--  end listing section  -->

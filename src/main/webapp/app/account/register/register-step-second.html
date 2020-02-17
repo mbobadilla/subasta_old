@@ -1,0 +1,160 @@
+
+
+
+<div class="register-main row">
+    <div class="col-md-8 col-md-offset-2">
+        <div>
+            <h1 data-translate="register.titleSecondStep">Registration</h1>
+            
+            <section ng-show="vm.showSecondStep">
+				<h5><b>IMPORTANTE:</b></h5>
+				<ul style="font-style: italic;">
+				  <li>Último paso, ingrese los datos y haga click en finalizar.</li>
+				  <li>Al terminar este paso, su usuario ya se encontrar&aacute; completamente registrado.</li>
+				  <li>Ante un posible error en este paso, puede ingresar con su usuario y modificar los datos desde "Ajustes del Usuario".</li>
+				</ul> 
+			</section>
+  
+            <div class="alert alert-success" ng-show="vm.success" data-translate="register.messages.success"></div>
+            <div class="alert alert-danger" ng-show="vm.secondStepFail" data-translate="register.messages.error.secondStepFail"></div>
+            <div class="alert alert-danger" ng-show="vm.phoneValidationFail" data-translate="register.messages.error.phoneValidationFail"></div>
+        </div>
+    </div>
+  
+  
+    <div class="col-md-4 col-md-offset-2">
+      <form name="form" ng-show="vm.showSecondStep" role="form" novalidate ng-submit="vm.registerSecondStep()" show-validation>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+        	<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+        		<p style="color: grey;font-size: small;"><i>Se le ha enviado un código a su número de teléfono <strong>{{vm.registerAccount.cellPhone}}</strong>, por favor ingreselo a continuación.</i></p>
+        	</div>
+        	<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		        <div class="col-md-3">
+	        		<label class="control-label" for="cellPhoneValidationKey" data-translate="global.form.cellPhoneValidationKey">Código de validación</label>
+	        	</div>
+				<div class="col-md-7">	        	
+			        <input class="form-control" type="text" id="phoneValidationKey" name="phoneValidationKey" placeholder="{{'global.form.phoneValidationKey.placeholder' | translate}}" ng-model="vm.registerAccount.phoneValidationKey" ng-maxlength="5">
+			    </div>
+	        </div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+        	<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		        <div class="col-md-3">
+            		<label class="control-label" for="dni" data-translate="global.form.dni">Dni</label>
+            	</div>
+            	<div class="col-md-7">	
+            		<input class="form-control" type="text" id="dni" name="dni" ng-model="vm.registerAccount.dni" ng-maxlength="20">
+            	</div>
+            </div>
+            <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+	            <div ng-messages="form.dni.$error" ng-show="form.dni.$dirty && form.dni.$invalid">
+	              <div class="help-block" ng-show="form.dni.$error.required" data-translate="register.messages.validate.dni.required">Your identification number is required.</div>
+	              <div class="help-block" ng-show="form.dni.$error.maxlength" data-translate="register.messages.validate.dni.maxlength">Your identification number cannot be longer than 20 characters.</div>
+	            </div>
+            </div>
+        </div>
+		
+
+		<div class="form-group" style="margin-bottom: 3px;">
+			<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		        <div class="col-md-3">
+            		<label class="control-label" for="birthday" data-translate="global.form.birthday">Birthday</label>
+            	</div>
+            	<div class="col-md-7">
+            		<input class="form-control" type="date" id="birthday" name="birthday" ng-model="vm.registerAccount.birthday" max="{vm.minAge | date:'yyyy-MM-dd'}">
+            	</div>
+            </div>
+            <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+	            <div ng-messages="form.birthday.$error" ng-show="form.birthday.$dirty && form.birthday.$invalid">
+	              <div class="help-block" ng-show="form.birthday.$error.required" data-translate="register.messages.validate.birthday.required">Your birthday is required.</div>
+	            </div>
+            </div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+        	<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		        <div class="col-md-3">
+	        		<label class="control-label" for="address" data-translate="global.form.address">Address</label>
+	        	</div>
+		        <div class="col-md-7">
+		        	<input class="form-control" type="text" id="address" name="address" ng-model="vm.registerAccount.address" ng-maxlength="255">
+		        </div>
+	        </div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+		        <div ng-messages="form.address.$error" ng-show="form.address.$dirty && form.address.$invalid">
+		            <div class="help-block" ng-show="form.address.$error.required" data-translate="register.messages.validate.address.required">Your address is required.</div>
+		            <div class="help-block" ng-show="form.address.$error.maxlength" data-translate="register.messages.validate.address.maxlength">Your address cannot be longer than 255 characters.</div>
+		        </div>
+		    </div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+        	<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		        <div class="col-md-3">
+	        		<label class="control-label" for="postalCode" data-translate="global.form.postalCode">Postal Code</label>
+	        	</div>
+	        	<div class="col-md-7">
+	        		<input class="form-control" type="text" id="postalCode" name="postalCode" ng-model="vm.registerAccount.postalCode" ng-maxlength="255">
+	        	</div>
+	        </div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+		        <div ng-messages="form.postalCode.$error" ng-show="form.postalCode.$dirty && form.postalCode.$invalid">
+		            <div class="help-block" ng-show="form.postalCode.$error.required" data-translate="register.messages.validate.postalCode.required">Your postalCode is required.</div>
+		            <div class="help-block" ng-show="form.postalCode.$error.maxlength" data-translate="register.messages.validate.postalCode.maxlength">Your postalCode cannot be longer than 255 characters.</div>
+		        </div>
+	        </div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+        	<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		        <div class="col-md-3">
+	        		<label class="control-label" for="city" data-translate="global.form.city">City</label>
+	        	</div>
+	        	<div class="col-md-7">
+	        		<input class="form-control" type="text" id="city" name="city" ng-model="vm.registerAccount.city" ng-maxlength="255" required>
+	        	</div>
+	        </div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+		        <div ng-messages="form.city.$error" ng-show="form.city.$dirty && form.city.$invalid">
+		            <div class="help-block" ng-show="form.city.$error.required" data-translate="register.messages.validate.city.required">Your city is required.</div>
+		            <div class="help-block" ng-show="form.city.$error.maxlength" data-translate="register.messages.validate.city.maxlength">Your city cannot be longer than 255 characters.</div>
+		        </div>
+	        </div>
+	    </div>
+        
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+        	<div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;">
+		        <div class="col-md-3">
+	        		<label class="control-label" for="userCountry" data-translate="global.form.userCountry">Country</label>
+	        	</div>
+	        	<div class="col-md-7">
+	        		<country-select id="userCountry" name="userCountry" ng-model="vm.registerAccount.userCountry" cs-priorities="AR, CL, UY, PY, BO, PE, CO, EC, MX, BR, US" cs-required required></country-select>
+	        	</div>
+	        </div>
+	        <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 3px;padding-left: 15px;">
+		        <div ng-messages="form.userCountry.$error" ng-show="form.userCountry.$dirty && form.userCountry.$invalid">
+		            <div class="help-block" ng-show="form.userCountry.$error.required" data-translate="register.messages.validate.userCountry.required">Your country is required.</div>
+		        </div>
+		    </div>
+        </div>
+        
+        <div class="form-group" style="margin-bottom: 3px;">
+            <md-checkbox id="emailNotifications" name="emailNotifications" ng-model="vm.registerAccount.emailNotifications" ng-checked="true">
+              <span data-translate="global.form.emailNotifications">Email Notifications</span>
+            </md-checkbox>
+  		</div>
+		
+		<div class="form-group" style="margin-bottom: 3px;">
+            <md-checkbox id="phoneNotifications" name="phoneNotifications" ng-model="vm.registerAccount.phoneNotifications" ng-checked="true">
+              <span data-translate="global.form.phoneNotifications">Phone Notifications</span>
+            </md-checkbox>
+        </div>
+       
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.secondStep.button">Register second step</button>
+      
+      </form>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+{
+    "messageManagement": {
+        "home": {
+            "title": "Mensajes",
+            "template": "Administración de templates",
+            "createOrEditLabel": "Ver un Mensaje"
+        },
+        "created": "A new user is created with identifier {{ param }}",
+        "updated": "An user is updated with identifier {{ param }}",
+        "deleted": "An user is deleted with identifier {{ param }}",
+        "delete": {
+            "question": "¿Seguro que quieres eliminar el usuario {{ login }}?"
+        },
+        "state": "Estado",
+        "name": "Nombre",
+        "type": "Tipo",
+        "email": "Email",
+        "startDate": "Fecha Inicio",
+        "endDate": "Fecha Terminación",
+        "createdBy": "Creado por",
+        "cellPhone": "Teléfono celular",
+        "message": "Mensaje"
+    }
+}

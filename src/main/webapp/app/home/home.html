@@ -1,0 +1,208 @@
+<link rel="stylesheet" href="content/css/custom/home.css">
+
+<div layout-gt-sm="row" layout-sm="column" layout-xs="column" class="row" style="background-color: white;" >
+
+  <div flex-gt-sm="70" flex-sm="100" flex-xs="100" layout-gt-sm="row" layout-sm="row" layout-xs="column" >
+	  <div flex-gt-sm="25" flex-sm="25" flex-xs="100" flex-order-xs="1" style="background-color: white; margin: 8px;">
+	    <div  id="boxsombra"  >
+		     <img class="img-responsive center-block" alt="Responsive image" src="content/images/logo-solaguayre-nuevo.png" style="cursor:pointer;cursor:hand;" onMouseOver="window.status='Venta OnLine';return true" border="0" onclick="window.open('http://www.solaguayre.com.ar/', '_system')"/>
+		</div>	                            
+		<div id="boxsombra"  >
+			<img class="img-responsive center-block" alt="Responsive image" ng-src="content/images/{{vm.urlSegundaImagen}}" 
+				style="cursor:pointer;cursor:hand;" onMouseOver="window.status='Venta OnLine';return true" border="0" 
+				ui-sref="{{vm.stateSegundaImagen}}" />
+		</div>	
+		<div  id="boxsombra"  >
+			<a ui-sref="evento()">
+		    	<img class="img-responsive center-block" alt="Responsive image"  src="content/images/productos_2.jpg" style="cursor:pointer;cursor:hand;" onMouseOver="window.status='xxx';return true" border="0""/>
+		    </a>
+		</div>
+		
+
+		<div  id="boxsombra"  >
+			<!-- 	Si estas en home descarga catalogo -->
+			<!-- 	si estas en condiciones descarga condiciones -->
+			<div ng-if="vm.appType">
+				<a ng-click="downloadMobleFile()">
+			    	<img class="img-responsive center-block" alt="Responsive image" ng-src="content/images/{{vm.exportImage}}" onMouseOver="window.status='xxx';return true" border="0"  style="cursor:pointer;cursor:hand;"  />
+			    </a>
+		    </div>
+		    <div ng-if="!vm.appType">
+		    	<a ng-href="{{vm.exportPdf}}"  target="_blank"  >
+		     	<img class="img-responsive center-block" alt="Responsive image" ng-src="content/images/{{vm.exportImage}}" onMouseOver="window.status='xxx';return true" border="0"/></a>
+		    </div>
+		</div>	
+	  </div>
+	  
+	  <div flex-gt-sm="75" flex-sm="75" flex-xs="100" flex-order-xs="-1" style="background-color: white; margin: 8px;">
+	    <div id="boxsombra" >
+			<div uib-carousel active="0" interval="5000" no-wrap="false">
+		      <div uib-slide ng-repeat="slide in vm.slides track by slide.id" index="slide.id">
+		        <img ng-src="{{slide.image}}" style="margin:auto;">
+		      </div>
+		    </div>
+			
+       	</div>
+	  </div>
+  </div>
+  
+  <div flex-gt-sm="30" flex-sm="100" flex-xs="100" layout-gt-sm="row" layout-sm="column" layout-xs="column" >
+    <div flex style="background-color: white; margin: 8px;" >
+      
+		<div id="boxsombra">
+	        <div class="row">
+				<div class="col-xs-12 text-center">
+				    <span data-translate="global.home.receiveInformation" ng-show="!vm.success" id="subscribe-text">Reciba infomaci&oacute;n de nuestras pr&oacute;ximas ofertas</span><br/> 
+				    <div class="alert alert-success" ng-show="vm.success" data-translate="global.messages.success">
+				               <strong>Se ha subscripto correctamante!</strong>
+				    </div>                                   
+			    </div>
+			</div>
+				<form name="form" role="form" novalidate ng-submit="vm.subscribe()" show-validation ng-show="!vm.success" >
+					<div class="row">
+							<div class="form-group">
+								<input type="text" style="width: 80%;height: 35px;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;" class="form-control" id="name" name="name" placeholder="{{'global.form.name.placeholder' | translate}}"
+											   ng-model="vm.subscriberPerson.name" ng-minlength=1 ng-maxlength=100 required>
+								<div ng-show="form.name.$dirty && form.name.$invalid">
+											<p class="help-block" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;"
+												   ng-show="form.name.$error.required" data-translate="global.messages.validate.name.required">
+												Su nombre es obligatorio.
+											</p>
+											<p class="help-block" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;"
+												   ng-show="form.name.$error.maxlength" data-translate="global.messages.validate.name.maxlength">
+												Your name cannot be longer than 40 characters.
+											</p>
+								</div>
+							</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<input type="email" style="width: 80%;height: 35px;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
+										   ng-model="vm.subscriberPerson.email" ng-minlength=5 ng-maxlength=100 required>
+							<div ng-show="form.email.$dirty && form.email.$invalid">
+										<p class="help-block" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;"
+											   ng-show="form.email.$error.required" data-translate="global.messages.validate.email.required">
+											Your email is required.
+										</p>
+										<p class="help-block" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;"
+											   ng-show="form.email.$error.email" data-translate="global.messages.validate.email.invalid">
+											Your email is invalid.
+										</p>
+							 </div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+							<input type="tel" style="width: 80%;height: 35px;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;" 
+								class="form-control" id="cellPhone" name="cellPhone" placeholder="{{'global.form.cellPhone.placeholder' | translate}}"
+							   	ng-model="vm.subscriberPerson.cellPhone" required >
+							<div ng-show="form.cellPhone.$dirty && form.cellPhone.$invalid">
+										<p class="help-block" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;"
+											   ng-show="form.cellPhone.$error.required" data-translate="global.messages.validate.cellPhone.required">
+											Your cellphone is required.
+										</p>
+										<p class="help-block" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;"
+											   ng-show="form.cellPhone.$error && !form.cellPhone.$error.required" data-translate="global.messages.validate.cellPhone.invalid">
+											Your cellphone is invalid.
+										</p>
+							 </div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group">	
+							<textarea rows="4" cols="50" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;padding-top: 5px;color: black;border: 1px solid #ccc;" 
+								class="form-control" id="message" name="message" placeholder="{{'global.form.message.placeholder' | translate}}"
+								ng-model="vm.subscriberPerson.message"  ng-maxlength=255 required >
+							</textarea>
+							<div ng-show="form.message.$dirty && form.message.$invalid">
+										<p class="help-block" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;"
+											   ng-show="form.message.$error.required" data-translate="global.messages.validate.message.required">
+											Your message is required.
+										</p>
+										<p class="help-block" style="width: 80%;padding: 0px;margin: 0px;margin-left: 35px;padding-left: 5px;margin-top: 10px;"
+											   ng-show="form.message.$error.maxlength" data-translate="global.messages.validate.message.maxlength">
+											Your name cannot be longer than 255 characters.
+										</p>
+							 </div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-xs-12 text-center">
+							<button data-translate="global.home.send" type="submit" ng-disabled="form.$invalid" style="height: 35px;margin: 15px 5px;width: 70%; font-size: 16px;" class="btn btn-primary">Enviar</button>
+						</div>
+					</div>
+				</form>   
+        </div>
+        <div ng-switch="vm.isAuthenticated()">
+	        <div id="boxsombra" ng-switch-when="false">
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<span data-translate="global.home.registrarse" id="subscribe-text">Participe de nuestra pr&oacute;xima venta online</span><br/>                                                             
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<div>
+							<button data-translate="global.home.register" type="button" ng-click="vm.register()" style="height: 35px;margin: 15px 5px;width: 75%; font-size: 16px;" class="btn btn-danger">
+								Registrate
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	    <div ng-switch="vm.isAuthenticated() && !!vm.account.lastEvent && !vm.account.lastEventParticipant">
+	        <div id="boxsombra" ng-switch-when="true">
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<span data-translate="global.home.participate" id="subscribe-text">Participe de nuestra pr&oacute;xima venta online</span><br/>                                                             
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<div>
+							<button data-translate="global.home.participar" type="button" ng-click="participar()" style="height: 35px;margin: 15px 5px;width: 75%; font-size: 16px;" class="btn btn-danger">
+								Participar
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-left: 0px;margin-right: 0px;">  							
+			<div id="boxsombra" style="width: 32%;float: left;">
+	 	       <a href="https://www.facebook.com/solaguayre/"  target="_blank"  >
+	 			     <img class="img-responsive center-block" alt="Responsive image" name="facebook" src="content/images/facebook-logo.png" onMouseOver="window.status='Canal de Solaguayre en Facebook';return true" border="0"></a>
+			</div>
+			<div style="width: 3%;float: left;">&nbsp;</div>
+			<div id="boxsombra" style="width: 31%;float: left;">
+				<a href="https://www.youtube.com/channel/UC1VihQGkrnjD5xkyvPmL0hA" target="_blank">
+	  	     		<img class="img-responsive center-block" alt="Responsive image" name="youtube" src="content/images/youtube-logo.png" onMouseOver="window.status='Ver Canal de SSolaguayre en Youtube';return true" border="0">
+	  	    	</a>
+			</div>
+			<div style="width: 3%;float: left;">&nbsp;</div>
+			<div id="boxsombra" style="width: 31%;float: left;">
+				<a href="https://www.instagram.com/solaguayre/" target="_blank">
+	  	     		<img class="img-responsive center-block" alt="Responsive image" name="instagram" src="content/images/new-instagram-text-logo.png" onMouseOver="window.status='Ver Canal de SSolaguayre en Youtube';return true" border="0">
+	  	    	</a>
+			</div>
+		</div>
+		<div ng-if="!vm.appType" class="row" style="margin-left: 0px;margin-right: 0px;">
+		    <div id="boxsombra" style="width: 48%;float: left;">
+				<a href="https://play.google.com/store/apps/details?id=ar.com.pmpbsolutions.subastados&hl=es" target="_blank">
+	  	     		<img class="img-responsive center-block" alt="Responsive image" name="android-store" src="content/images/play-store.png" onMouseOver="window.status='Ver Canal de SSolaguayre en Youtube';return true" border="0">
+	  	    	</a>
+			</div>  
+			<div style="width: 4%;float: left;">&nbsp;</div>                                
+		    <div id="boxsombra" style="width: 48%;float: left;">
+				<a href="https://itunes.apple.com/ar/app/solaguayre-venta-online/id1375050553?mt=8" target="_blank">
+	  	     		<img class="img-responsive center-block" alt="Responsive image" name="ios-store" src="content/images/app-store-logo.png" onMouseOver="window.status='Ver Canal de SSolaguayre en Youtube';return true" border="0">
+	  	    	</a>
+			</div>                                  
+		</div>
+		
+    </div>
+  </div>
+</div>
+

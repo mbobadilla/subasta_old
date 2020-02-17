@@ -1,0 +1,188 @@
+<div>
+    <h2 data-translate="userManagement.home.title">Users</h2>
+    <jhi-alert></jhi-alert>
+<!--     <div class="row"> -->
+      
+      <div layout="column">
+      	
+      	  <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 5px;">
+      	    <div class="col-md-1"><label>Login</label></div>
+      	    <div class="col-md-2"><input type="text" ng-model="vm.filter.login"></div>
+      	    <div class="col-md-1"><label>Nombre</label></div>
+      	    <div class="col-md-2"><input type="text" ng-model="vm.filter.firstName"></div>
+      	    <div class="col-md-1"><label>Apellido</label></div>
+      	    <div class="col-md-2"><input type="text" ng-model="vm.filter.lastName"></div>
+      	    <div class="col-md-2">
+			  	<md-switch style="margin:0px;" class="md-primary" name="activated" ng-model="vm.filter.activated">
+	         			{{vm.filter.activated ? "Activado" : "Desactivado"}}
+	       		</md-switch>
+			  	<md-switch style="margin:0px;" class="md-primary" name="blocked" ng-model="vm.filter.blocked">
+	         			{{vm.filter.blocked ? "Bloqueado" : "Desbloqueado"}}
+	       		</md-switch>
+    		</div>
+		  </div>
+		  <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 5px;">
+		  	<div class="col-md-1"><label>Ciudad</label></div>
+		  	<div class="col-md-2"><input type="text" ng-model="vm.filter.city"></div>
+		  	<div class="col-md-1"><label>País</label></div>
+		  	<div class="col-md-2"><country-select style="width: 81%; height: 100%;" ng-model="vm.filter.country" cs-priorities="AR, CL, UY, PY, BO, PE, CO, EC, MX, BR, US" original-template ></country-select></div>
+		  	<div class="col-md-1"><label>Evento</label></div>
+		  	<div class="col-md-2">
+			  	<select ng-model="vm.filter.eventId"  style="width: 81%; height: 100%;">
+			  		<option ng-value="-1"></option>
+	            	<option ng-repeat="event in vm.events" ng-value="event.id">
+	              		{{event.name}}
+	            	</option>
+	          	</select>
+		  	</div>
+		  	<div ng-show="vm.filter.eventId == -1 || !vm.filter.eventId" class="col-md-2">
+			  	<md-switch ng-disabled="true" style="margin:0px;" name="participant" ng-model="vm.filter.participant">
+          			{{vm.filter.participant ? "Participante" : "No Participante"}}
+        		</md-switch>
+    		</div>
+    		<div ng-show="vm.filter.eventId > 0" class="col-md-2">
+			  	<md-switch style="margin:0px;" class="md-primary" name="participant" ng-model="vm.filter.participant">
+          			{{vm.filter.participant ? "Participante" : "No Participante"}}
+        		</md-switch>
+    		</div>
+		  </div>
+		  <fieldset class="scheduler-border" style="padding-right: 0px;">
+			      <legend class="scheduler-border" style="font-size: 14px;">Email y Celular</legend>
+			      <div layout="row" layout-wrap flex>
+		            <div class="col-md-2">
+		              <md-checkbox ng-model="vm.filter.validatedEmail">
+		                <span>Email validado</span>
+		              </md-checkbox>
+		            </div>
+		            <div class="col-md-2">
+		              <md-checkbox ng-model="vm.filter.notValidatedEmail">
+		                <span>Email no validado</span>
+		              </md-checkbox>
+		            </div>
+		            <div class="col-md-2">
+		              <md-checkbox ng-model="vm.filter.validatedPhone">
+		                <span>Celular validado</span>
+		              </md-checkbox>
+		            </div>
+		            <div class="col-md-2">
+		              <md-checkbox ng-model="vm.filter.notValidatedPhone">
+		                <span>Celular no validado</span>
+		              </md-checkbox>
+		            </div>
+			      </div>
+		  </fieldset>
+		  </div>
+		  <div layout="row" style="margin-bottom: 5px;">
+
+		  </div>
+		  
+<!-- 			// Evento style="width: 100px" -->
+<!-- 			private Long eventId; -->
+      	  
+      	  <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 5px;padding-left: 15px;">
+            <button class="btn btn-primary" style="margin-right: 5px;margin-bottom: 5px;" ui-sref="user-management.new({filter: vm.filter})">
+              <span class="glyphicon glyphicon-flash"></span> <span data-translate="userManagement.home.createLabel">Create a new User</span>
+            </button>
+            
+            <button class="btn btn-primary" style="margin-right: 5px;margin-bottom: 5px;" ng-click="vm.sendNotification()">
+              <span>Enviar mensaje</span>
+            </button>
+            
+             <button style="margin-right: 5px;margin-bottom: 5px;" ui-sref="user-management.activity({login:'anonymoususer'})" class="btn btn-success">
+               <span data-translate="entity.action.anonymousactivity"></span>
+             </button>
+             
+             <button class="btn btn-primary" style="margin-right: 5px;margin-bottom: 5px;" ng-click="vm.clearSearch()">
+              <span>Limpiar busqueda</span>
+             </button>
+            
+             <button class="btn btn-primary" style="margin-right: 5px;margin-bottom: 5px;" ng-click="vm.search()">
+              <span>Buscar</span>
+            </button>
+          </div>
+      </div>
+<!--     </div> -->
+    
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+            	<th><span><input type="checkbox" ng-model="vm.allSelected" ng-change="vm.changeAll()"></span></th>
+            	
+                <th jh-sort-by="id"><span data-translate="global.field.id">ID</span><span class="glyphicon glyphicon-sort"></span></th>
+                <th  style="white-space: nowrap;" jh-sort-by="login"><span data-translate="userManagement.login">Login</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="email"><span data-translate="userManagement.email">Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+                <th></th>
+                <th  style="white-space: nowrap;" jh-sort-by="cellPhone"> <span data-translate="userManagement.cellPhone">cellPhone</span> <span class="glyphicon glyphicon-sort"></span></th>            
+                <th jh-sort-by="firstName"><span data-translate="userManagement.firstName">firstName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="lastName"><span data-translate="userManagement.lastName">LastName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="userCountry"><span data-translate="global.form.userCountry">Country</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="city"><span data-translate="global.form.city">City</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="presentedBy"><span data-translate="userManagement.presentedBy">Presentado pot</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th jh-sort-by="comments"><span data-translate="userManagement.comments">comments</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in vm.users track by user.id">
+            	<td><input type="checkbox" data-checklist-model="vm.selected" data-checklist-value="user"></td>
+                
+                <td><a ui-sref="user-management-detail({login:user.login})">{{user.id}}</a></td>
+                <td>{{user.login}}</td>
+                <td ng-show="user.emailValid">{{user.email}}</td>
+                <td ng-show="!user.emailValid" style="color: red;"><b>{{user.email}}</b></td>
+                <td>
+                    <button class="btn btn-danger btn-xs" ng-click="vm.setActive(user, true)" ng-show="!user.activated"
+                            data-translate="userManagement.deactivated">Deactivated</button>
+                    <button class="btn btn-success btn-xs" ng-click="vm.setActive(user, false)" ng-show="user.activated"
+                            ng-disabled="vm.currentAccount.login === user.login" data-translate="userManagement.activated">Activated</button>
+                </td>
+				<td>
+                    <button class="btn btn-success btn-xs" ng-click="vm.setBlocked(user, true)" ng-show="!user.bloqueado"
+                            ng-disabled="vm.currentAccount.login === user.login" data-translate="entity.action.block">Bloquear</button>
+                    <button class="btn btn-danger btn-xs" ng-click="vm.setBlocked(user, false)" ng-show="user.bloqueado"
+                            data-translate="entity.action.unBlock">Desbloquear</button>
+                </td>
+                <td ng-show="user.phoneValid">{{user.cellPhone}}</td>
+                <td ng-show="!user.phoneValid" style="color: red;"><b>{{user.cellPhone}}</b></td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.userCountry}}</td>
+                <td>{{user.city}}</td>
+
+                <td>{{user.presentedBy}}</td>
+                <td style="word-break: break-all;">{{user.comments}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="user-management.activity({login:user.login})"
+                                class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            <span class="hidden-xs hidden-sm" ></span> <!-- data-translate="entity.action.activity"  -->
+                        </button>
+                        <button type="submit"
+                                ui-sref="user-management-detail({login:user.login})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <span class="hidden-xs hidden-sm" ></span> <!-- data-translate="entity.action.view" -->
+                        </button>
+                        <button type="submit"
+                                ui-sref="user-management.edit({login:user.login, filter: vm.filter})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-xs hidden-sm" ></span> <!-- data-translate="entity.action.edit" -->
+                        </button>
+                        <button type="submit"
+                                ui-sref="user-management.delete({login:user.login, filter: vm.filter})"
+                                class="btn btn-danger btn-sm" ng-disabled="vm.currentAccount.login === user.login">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-xs hidden-sm" ></span> <!-- data-translate="entity.action.delete" -->
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

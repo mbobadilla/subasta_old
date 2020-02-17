@@ -1,0 +1,62 @@
+<div>
+    <h2 data-translate="eventManagement.home.title">Events</h2>
+    
+    <div layout="column">
+   	  <div layout-gt-sm="row" layout-sm="column" layout-xs="column"  class="row" style="margin-bottom: 5px;padding-left: 15px;">
+         <button class="btn btn-primary" style="margin-right: 5px;margin-bottom: 5px;" ui-sref="event-management.new">
+           <span class="glyphicon glyphicon-flash"></span> <span data-translate="eventManagement.home.createLabel">Create a new Event</span>
+         </button>
+       </div>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th><span data-translate="global.field.id">ID</span></th>
+                <th><span data-translate="eventManagement.name">Name</span></th>
+                <th><span data-translate="eventManagement.initDate">Init Date</span></th>
+                <th><span data-translate="eventManagement.endDate">End Date</span></th>
+                <th><span>Estado</span></th>
+                <th><span>Tipo</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="event in vm.events track by event.id">
+                <td>{{event.id}}</td>
+                <td>{{event.name}}</td>
+                <td style="white-space: nowrap;">{{event.initDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td style="white-space: nowrap;">{{event.endDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td><div ng-if="event.deleted" style="color: red;">Borrado</div><div ng-if="event.active">Activo</div></td>
+                <td>{{event.type}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                ui-sref="event-management.edit({id:event.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                        </button>
+                        <button ng-if="!event.deleted" type="submit"
+                                ui-sref="event-management.delete({id:event.id})"
+                                class="btn btn-danger btn-sm" >
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                            <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                        </button>
+                        <button ng-if="!event.deleted" type="button"
+                                ng-click="vm.downloadExcel(event.id, event.name)"
+                                class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-list-alt"></span>
+                            <span class="hidden-xs hidden-sm" >Excel</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{email.user.notification.title}"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+    </head>
+    <body>
+        <p th:text="#{email.user.notification.greeting(${user.firstName})}">
+        </p>
+        <p th:text="#{email.user.notification.text1(${content})}">
+        </p>
+        <p>
+            <span th:text="#{email.user.notification.text2}"></span>
+            <br/>
+            <em th:text="#{email.user.notification.signature}"></em>
+        </p>
+    </body>
+</html>

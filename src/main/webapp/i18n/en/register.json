@@ -1,0 +1,77 @@
+{
+    "register": {
+        "titleFirstStep": "Registration first step",
+        "titleSecondStep": "Registration second step",
+        "form": {
+        	"firstStep": {
+        		"button": "Continue"
+        	},
+            "secondStep": {
+        		"button": "Finish registration"
+        	}
+        },
+        "messages": {
+            "validate": {
+                "login": {
+                    "required": "Your username is required.",
+                    "minlength": "Your username is required to be at least 1 character.",
+                    "maxlength": "Your username cannot be longer than 50 characters.",
+                    "pattern": "Your username can only contain letters and digits."
+                },
+                "name": {
+                    "required": "Your name is required.",
+                    "maxlength": "Your name cannot be longer than 50 characters."
+                },
+                "email": {
+                     "required": "Your email is required.",
+                    "invalid": "Your email is not valid"
+                },
+                "firstName": {
+                   "required": "Your first name is required.",
+                    "maxlength": "Your first name cannot be longer than 50 characters."
+                },
+                "lastName": {
+                    "required": "Your last name is required.",
+                    "maxlength": "Your last name cannot be longer than 50 characters."
+                },
+                "dni": {
+                    "required": "Your dni is required.",
+                    "maxlength": "Your dni cannot be longer than 50 characters."
+                },
+                "birthday": {
+                     "required": "Your birthday is required."
+                },
+                "cellPhone": {
+                    "required": "Your cell phone is required.",
+                    "maxlength": "Your cell phone cannot be longer than 50 characters."
+                },
+                "address": {
+                   	"required": "Your address is required.",
+                    "maxlength": "Your address cannot be longer than 50 characters."
+                },
+                "postalCode": {
+                    "required": "Your postal code is required.",
+                    "maxlength": "Your postal code cannot be longer than 50 characters."
+                },
+                "city": {
+                    "required": "Your city is required.",
+                    "maxlength": "Your city cannot be longer than 50 characters."
+                },
+                "userCountry": {
+                    "required": "Your country is required."
+                },
+                "acceptedConditions": {
+                    "required": "You must accept the terms of service before you can proceed."
+                }
+            },
+            "success": "<strong>Registration saved! Wait for the authorization of the administrator.</strong> Please check your email for confirmation.",
+            "error": {
+                "fail": "<strong>Registration failed!</strong> Please try again later.",
+                "secondStepFail": "<strong>¡Ha ocurrido un error!</strong> Ingrese con su usuario y complete los datos desde 'Ajustes del Usuario'.",
+                "phoneValidationFail": "<strong>¡Ha fallado la validacion del celular!</strong> Ingrese con su usuario y valide su celular desde 'Ajustes del Usuario'.",
+                "userexists": "<strong>Login name already registered!</strong> Please choose another one.",
+                "emailexists": "<strong>Email is already in use!</strong> Please choose another one."
+            }
+        }
+    }
+}
